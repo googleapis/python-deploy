@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.3.1](https://github.com/googleapis/python-deploy/compare/v0.3.0...v0.3.1) (2022-04-01)
+
+
+### Bug Fixes
+
+* **deps:** require google-api-core >= 1.31.5, >= 2.3.2 on v0 release ([#54](https://github.com/googleapis/python-deploy/issues/54)) ([9e9c713](https://github.com/googleapis/python-deploy/commit/9e9c71351ab7ea72843f2a732ae17f6904c4ff65))
+
 ## [0.3.0](https://www.github.com/googleapis/python-deploy/compare/v0.2.0...v0.3.0) (2021-10-18)
 
 
