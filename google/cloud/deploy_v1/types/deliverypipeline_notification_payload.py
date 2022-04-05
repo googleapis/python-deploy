@@ -19,24 +19,25 @@ from google.cloud.deploy_v1.types import log_enums
 
 
 __protobuf__ = proto.module(
-    package='google.cloud.deploy.v1',
+    package="google.cloud.deploy.v1",
     manifest={
-        'TargetNotificationEvent',
+        "DeliveryPipelineNotificationEvent",
     },
 )
 
 
-class TargetNotificationEvent(proto.Message):
-    r"""Payload proto for "clouddeploy.googleapis.com/target_notification"
-    Platform Log event that describes the failure to send target status
-    change Pub/Sub notification.
+class DeliveryPipelineNotificationEvent(proto.Message):
+    r"""Payload proto for
+    "clouddeploy.googleapis.com/deliverypipeline_notification" Platform
+    Log event that describes the failure to send delivery pipeline
+    status change Pub/Sub notification.
 
     Attributes:
         message (str):
             Debug message for when a notification fails
             to send.
-        target (str):
-            The name of the ``Target``.
+        delivery_pipeline (str):
+            The name of the ``Delivery Pipeline``.
         type_ (google.cloud.deploy_v1.types.Type):
             Type of this notification, e.g. for a Pub/Sub
             failure.
@@ -46,7 +47,7 @@ class TargetNotificationEvent(proto.Message):
         proto.STRING,
         number=1,
     )
-    target = proto.Field(
+    delivery_pipeline = proto.Field(
         proto.STRING,
         number=2,
     )

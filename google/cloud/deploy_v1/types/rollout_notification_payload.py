@@ -19,42 +19,59 @@ from google.cloud.deploy_v1.types import log_enums
 
 
 __protobuf__ = proto.module(
-    package='google.cloud.deploy.v1',
+    package="google.cloud.deploy.v1",
     manifest={
-        'DeliveryPipelineNotificationEvent',
+        "RolloutNotificationEvent",
     },
 )
 
 
-class DeliveryPipelineNotificationEvent(proto.Message):
-    r"""Payload proto for
-    "clouddeploy.googleapis.com/deliverypipeline_notification" Platform
-    Log event that describes the failure to send delivery pipeline
-    status change Pub/Sub notification.
+class RolloutNotificationEvent(proto.Message):
+    r"""Payload proto for "clouddeploy.googleapis.com/rollout_notification"
+    Platform Log event that describes the failure to send rollout status
+    change Pub/Sub notification.
 
     Attributes:
         message (str):
             Debug message for when a notification fails
             to send.
-        delivery_pipeline (str):
-            The name of the ``Delivery Pipeline``.
+        pipeline_uid (str):
+            Unique identifier of the ``DeliveryPipeline``.
+        release_uid (str):
+            Unique identifier of the ``Release``.
+        rollout (str):
+            The name of the ``Rollout``.
         type_ (google.cloud.deploy_v1.types.Type):
             Type of this notification, e.g. for a Pub/Sub
             failure.
+        target_id (str):
+            ID of the ``Target`` that the rollout is deployed to.
     """
 
     message = proto.Field(
         proto.STRING,
         number=1,
     )
-    delivery_pipeline = proto.Field(
+    pipeline_uid = proto.Field(
         proto.STRING,
         number=2,
     )
+    release_uid = proto.Field(
+        proto.STRING,
+        number=3,
+    )
+    rollout = proto.Field(
+        proto.STRING,
+        number=4,
+    )
     type_ = proto.Field(
         proto.ENUM,
-        number=3,
+        number=5,
         enum=log_enums.Type,
+    )
+    target_id = proto.Field(
+        proto.STRING,
+        number=6,
     )
 
 

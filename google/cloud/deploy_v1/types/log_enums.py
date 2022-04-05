@@ -13,21 +13,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-from collections import OrderedDict
-from typing import Dict, Type
-
-from .base import CloudDeployTransport
-from .grpc import CloudDeployGrpcTransport
-from .grpc_asyncio import CloudDeployGrpcAsyncIOTransport
+import proto  # type: ignore
 
 
-# Compile a registry of transports.
-_transport_registry = OrderedDict()  # type: Dict[str, Type[CloudDeployTransport]]
-_transport_registry['grpc'] = CloudDeployGrpcTransport
-_transport_registry['grpc_asyncio'] = CloudDeployGrpcAsyncIOTransport
-
-__all__ = (
-    'CloudDeployTransport',
-    'CloudDeployGrpcTransport',
-    'CloudDeployGrpcAsyncIOTransport',
+__protobuf__ = proto.module(
+    package="google.cloud.deploy.v1",
+    manifest={
+        "Type",
+    },
 )
+
+
+class Type(proto.Enum):
+    r"""Type indicates the type of the log entry and can be used as a
+    filter.
+    """
+    TYPE_UNSPECIFIED = 0
+    TYPE_PUBSUB_NOTIFICATION_FAILURE = 1
+    TYPE_RENDER_STATUES_CHANGE = 2
+
+
+__all__ = tuple(sorted(__protobuf__.manifest))
