@@ -16,7 +16,7 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Optional, Sequence, Tuple, Type, Union
+from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -630,7 +630,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import deploy_v1
+                    from google.cloud import deploy_v1
 
             def sample_list_delivery_pipelines():
                 # Create a client
@@ -738,7 +738,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import deploy_v1
+                    from google.cloud import deploy_v1
 
             def sample_get_delivery_pipeline():
                 # Create a client
@@ -841,7 +841,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import deploy_v1
+                    from google.cloud import deploy_v1
 
             def sample_create_delivery_pipeline():
                 # Create a client
@@ -972,7 +972,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import deploy_v1
+                    from google.cloud import deploy_v1
 
             def sample_update_delivery_pipeline():
                 # Create a client
@@ -1099,7 +1099,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import deploy_v1
+                    from google.cloud import deploy_v1
 
             def sample_delete_delivery_pipeline():
                 # Create a client
@@ -1220,7 +1220,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import deploy_v1
+                    from google.cloud import deploy_v1
 
             def sample_list_targets():
                 # Create a client
@@ -1328,7 +1328,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import deploy_v1
+                    from google.cloud import deploy_v1
 
             def sample_get_target():
                 # Create a client
@@ -1426,7 +1426,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import deploy_v1
+                    from google.cloud import deploy_v1
 
             def sample_create_target():
                 # Create a client
@@ -1556,7 +1556,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import deploy_v1
+                    from google.cloud import deploy_v1
 
             def sample_update_target():
                 # Create a client
@@ -1681,7 +1681,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import deploy_v1
+                    from google.cloud import deploy_v1
 
             def sample_delete_target():
                 # Create a client
@@ -1802,7 +1802,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import deploy_v1
+                    from google.cloud import deploy_v1
 
             def sample_list_releases():
                 # Create a client
@@ -1909,7 +1909,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import deploy_v1
+                    from google.cloud import deploy_v1
 
             def sample_get_release():
                 # Create a client
@@ -2009,7 +2009,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import deploy_v1
+                    from google.cloud import deploy_v1
 
             def sample_create_release():
                 # Create a client
@@ -2138,7 +2138,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import deploy_v1
+                    from google.cloud import deploy_v1
 
             def sample_approve_rollout():
                 # Create a client
@@ -2234,7 +2234,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import deploy_v1
+                    from google.cloud import deploy_v1
 
             def sample_list_rollouts():
                 # Create a client
@@ -2342,7 +2342,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import deploy_v1
+                    from google.cloud import deploy_v1
 
             def sample_get_rollout():
                 # Create a client
@@ -2443,7 +2443,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import deploy_v1
+                    from google.cloud import deploy_v1
 
             def sample_create_rollout():
                 # Create a client
@@ -2576,7 +2576,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import deploy_v1
+                    from google.cloud import deploy_v1
 
             def sample_get_config():
                 # Create a client
