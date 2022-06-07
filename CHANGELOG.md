@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.2](https://github.com/googleapis/python-deploy/compare/v0.3.1...v0.3.2) (2022-06-07)
+
+
+### Bug Fixes
+
+* **deps:** require protobuf<4.0.0 on v0 branch ([#104](https://github.com/googleapis/python-deploy/issues/104)) ([4b36b5a](https://github.com/googleapis/python-deploy/commit/4b36b5a8136d2d3261703ae8320505c2452ac22a))
+
 ### [0.3.1](https://github.com/googleapis/python-deploy/compare/v0.3.0...v0.3.1) (2022-04-01)
 
 
