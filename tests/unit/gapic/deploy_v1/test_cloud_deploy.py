@@ -6089,7 +6089,6 @@ def test_cloud_deploy_transport_auth_adc(transport_class):
     [
         transports.CloudDeployGrpcTransport,
         transports.CloudDeployGrpcAsyncIOTransport,
-        transports.CloudDeployRestTransport,
     ],
 )
 def test_cloud_deploy_transport_auth_gdch_credentials(transport_class):
