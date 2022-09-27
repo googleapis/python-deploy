@@ -17,61 +17,66 @@ import proto  # type: ignore
 
 from google.cloud.deploy_v1.types import log_enums
 
-
 __protobuf__ = proto.module(
-    package='google.cloud.deploy.v1',
+    package="google.cloud.deploy.v1",
     manifest={
-        'RolloutNotificationEvent',
+        "JobRunNotificationEvent",
     },
 )
 
 
-class RolloutNotificationEvent(proto.Message):
-    r"""Payload proto for "clouddeploy.googleapis.com/rollout_notification"
-    Platform Log event that describes the failure to send rollout status
-    change Pub/Sub notification.
+class JobRunNotificationEvent(proto.Message):
+    r"""Payload proto for "clouddeploy.googleapis.com/jobrun_notification"
+    Platform Log event that describes the failure to send JobRun
+    resource update Pub/Sub notification.
 
     Attributes:
         message (str):
             Debug message for when a notification fails
             to send.
+        job_run (str):
+            The name of the ``JobRun``.
         pipeline_uid (str):
             Unique identifier of the ``DeliveryPipeline``.
         release_uid (str):
             Unique identifier of the ``Release``.
-        rollout (str):
-            The name of the ``Rollout``.
+        rollout_uid (str):
+            Unique identifier of the ``Rollout``.
+        target_id (str):
+            ID of the ``Target``.
         type_ (google.cloud.deploy_v1.types.Type):
             Type of this notification, e.g. for a Pub/Sub
             failure.
-        target_id (str):
-            ID of the ``Target`` that the rollout is deployed to.
     """
 
     message = proto.Field(
         proto.STRING,
         number=1,
     )
-    pipeline_uid = proto.Field(
+    job_run = proto.Field(
         proto.STRING,
         number=2,
     )
-    release_uid = proto.Field(
+    pipeline_uid = proto.Field(
         proto.STRING,
         number=3,
     )
-    rollout = proto.Field(
+    release_uid = proto.Field(
         proto.STRING,
         number=4,
     )
-    type_ = proto.Field(
-        proto.ENUM,
+    rollout_uid = proto.Field(
+        proto.STRING,
         number=5,
-        enum=log_enums.Type,
     )
     target_id = proto.Field(
         proto.STRING,
         number=6,
+    )
+    type_ = proto.Field(
+        proto.ENUM,
+        number=7,
+        enum=log_enums.Type,
     )
 
 
