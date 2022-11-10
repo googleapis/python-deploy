@@ -16,7 +16,18 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union, cast
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+    cast,
+)
 
 from google.api_core import client_options as client_options_lib
 from google.api_core import exceptions as core_exceptions
@@ -66,7 +77,7 @@ class CloudDeployClientMeta(type):
 
     def get_transport_class(
         cls,
-        label: str = None,
+        label: Optional[str] = None,
     ) -> Type[CloudDeployTransport]:
         """Returns an appropriate transport class.
 
@@ -555,7 +566,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
         self,
         *,
         credentials: Optional[ga_credentials.Credentials] = None,
-        transport: Union[str, CloudDeployTransport, None] = None,
+        transport: Optional[Union[str, CloudDeployTransport]] = None,
         client_options: Optional[Union[client_options_lib.ClientOptions, dict]] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
@@ -653,11 +664,13 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def list_delivery_pipelines(
         self,
-        request: Union[cloud_deploy.ListDeliveryPipelinesRequest, dict] = None,
+        request: Optional[
+            Union[cloud_deploy.ListDeliveryPipelinesRequest, dict]
+        ] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListDeliveryPipelinesPager:
         r"""Lists DeliveryPipelines in a given project and
@@ -769,11 +782,11 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def get_delivery_pipeline(
         self,
-        request: Union[cloud_deploy.GetDeliveryPipelineRequest, dict] = None,
+        request: Optional[Union[cloud_deploy.GetDeliveryPipelineRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> cloud_deploy.DeliveryPipeline:
         r"""Gets details of a single DeliveryPipeline.
@@ -875,13 +888,15 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def create_delivery_pipeline(
         self,
-        request: Union[cloud_deploy.CreateDeliveryPipelineRequest, dict] = None,
+        request: Optional[
+            Union[cloud_deploy.CreateDeliveryPipelineRequest, dict]
+        ] = None,
         *,
-        parent: str = None,
-        delivery_pipeline: cloud_deploy.DeliveryPipeline = None,
-        delivery_pipeline_id: str = None,
+        parent: Optional[str] = None,
+        delivery_pipeline: Optional[cloud_deploy.DeliveryPipeline] = None,
+        delivery_pipeline_id: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Creates a new DeliveryPipeline in a given project and
@@ -1015,12 +1030,14 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def update_delivery_pipeline(
         self,
-        request: Union[cloud_deploy.UpdateDeliveryPipelineRequest, dict] = None,
+        request: Optional[
+            Union[cloud_deploy.UpdateDeliveryPipelineRequest, dict]
+        ] = None,
         *,
-        delivery_pipeline: cloud_deploy.DeliveryPipeline = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        delivery_pipeline: Optional[cloud_deploy.DeliveryPipeline] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Updates the parameters of a single DeliveryPipeline.
@@ -1150,11 +1167,13 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def delete_delivery_pipeline(
         self,
-        request: Union[cloud_deploy.DeleteDeliveryPipelineRequest, dict] = None,
+        request: Optional[
+            Union[cloud_deploy.DeleteDeliveryPipelineRequest, dict]
+        ] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Deletes a single DeliveryPipeline.
@@ -1275,11 +1294,11 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def list_targets(
         self,
-        request: Union[cloud_deploy.ListTargetsRequest, dict] = None,
+        request: Optional[Union[cloud_deploy.ListTargetsRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListTargetsPager:
         r"""Lists Targets in a given project and location.
@@ -1390,11 +1409,11 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def get_target(
         self,
-        request: Union[cloud_deploy.GetTargetRequest, dict] = None,
+        request: Optional[Union[cloud_deploy.GetTargetRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> cloud_deploy.Target:
         r"""Gets details of a single Target.
@@ -1493,13 +1512,13 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def create_target(
         self,
-        request: Union[cloud_deploy.CreateTargetRequest, dict] = None,
+        request: Optional[Union[cloud_deploy.CreateTargetRequest, dict]] = None,
         *,
-        parent: str = None,
-        target: cloud_deploy.Target = None,
-        target_id: str = None,
+        parent: Optional[str] = None,
+        target: Optional[cloud_deploy.Target] = None,
+        target_id: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Creates a new Target in a given project and location.
@@ -1631,12 +1650,12 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def update_target(
         self,
-        request: Union[cloud_deploy.UpdateTargetRequest, dict] = None,
+        request: Optional[Union[cloud_deploy.UpdateTargetRequest, dict]] = None,
         *,
-        target: cloud_deploy.Target = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        target: Optional[cloud_deploy.Target] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Updates the parameters of a single Target.
@@ -1764,11 +1783,11 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def delete_target(
         self,
-        request: Union[cloud_deploy.DeleteTargetRequest, dict] = None,
+        request: Optional[Union[cloud_deploy.DeleteTargetRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Deletes a single Target.
@@ -1889,11 +1908,11 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def list_releases(
         self,
-        request: Union[cloud_deploy.ListReleasesRequest, dict] = None,
+        request: Optional[Union[cloud_deploy.ListReleasesRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListReleasesPager:
         r"""Lists Releases in a given project and location.
@@ -2003,11 +2022,11 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def get_release(
         self,
-        request: Union[cloud_deploy.GetReleaseRequest, dict] = None,
+        request: Optional[Union[cloud_deploy.GetReleaseRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> cloud_deploy.Release:
         r"""Gets details of a single Release.
@@ -2106,13 +2125,13 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def create_release(
         self,
-        request: Union[cloud_deploy.CreateReleaseRequest, dict] = None,
+        request: Optional[Union[cloud_deploy.CreateReleaseRequest, dict]] = None,
         *,
-        parent: str = None,
-        release: cloud_deploy.Release = None,
-        release_id: str = None,
+        parent: Optional[str] = None,
+        release: Optional[cloud_deploy.Release] = None,
+        release_id: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Creates a new Release in a given project and
@@ -2245,11 +2264,11 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def abandon_release(
         self,
-        request: Union[cloud_deploy.AbandonReleaseRequest, dict] = None,
+        request: Optional[Union[cloud_deploy.AbandonReleaseRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> cloud_deploy.AbandonReleaseResponse:
         r"""Abandons a Release in the Delivery Pipeline.
@@ -2347,11 +2366,11 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def approve_rollout(
         self,
-        request: Union[cloud_deploy.ApproveRolloutRequest, dict] = None,
+        request: Optional[Union[cloud_deploy.ApproveRolloutRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> cloud_deploy.ApproveRolloutResponse:
         r"""Approves a Rollout.
@@ -2450,11 +2469,11 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def list_rollouts(
         self,
-        request: Union[cloud_deploy.ListRolloutsRequest, dict] = None,
+        request: Optional[Union[cloud_deploy.ListRolloutsRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListRolloutsPager:
         r"""Lists Rollouts in a given project and location.
@@ -2565,11 +2584,11 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def get_rollout(
         self,
-        request: Union[cloud_deploy.GetRolloutRequest, dict] = None,
+        request: Optional[Union[cloud_deploy.GetRolloutRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> cloud_deploy.Rollout:
         r"""Gets details of a single Rollout.
@@ -2669,13 +2688,13 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def create_rollout(
         self,
-        request: Union[cloud_deploy.CreateRolloutRequest, dict] = None,
+        request: Optional[Union[cloud_deploy.CreateRolloutRequest, dict]] = None,
         *,
-        parent: str = None,
-        rollout: cloud_deploy.Rollout = None,
-        rollout_id: str = None,
+        parent: Optional[str] = None,
+        rollout: Optional[cloud_deploy.Rollout] = None,
+        rollout_id: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Creates a new Rollout in a given project and
@@ -2812,13 +2831,13 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def retry_job(
         self,
-        request: Union[cloud_deploy.RetryJobRequest, dict] = None,
+        request: Optional[Union[cloud_deploy.RetryJobRequest, dict]] = None,
         *,
-        rollout: str = None,
-        phase_id: str = None,
-        job_id: str = None,
+        rollout: Optional[str] = None,
+        phase_id: Optional[str] = None,
+        job_id: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> cloud_deploy.RetryJobResponse:
         r"""Retries the specified Job in a Rollout.
@@ -2936,11 +2955,11 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def list_job_runs(
         self,
-        request: Union[cloud_deploy.ListJobRunsRequest, dict] = None,
+        request: Optional[Union[cloud_deploy.ListJobRunsRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListJobRunsPager:
         r"""Lists JobRuns in a given project and location.
@@ -3051,11 +3070,11 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def get_job_run(
         self,
-        request: Union[cloud_deploy.GetJobRunRequest, dict] = None,
+        request: Optional[Union[cloud_deploy.GetJobRunRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> cloud_deploy.JobRun:
         r"""Gets details of a single JobRun.
@@ -3155,11 +3174,11 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def get_config(
         self,
-        request: Union[cloud_deploy.GetConfigRequest, dict] = None,
+        request: Optional[Union[cloud_deploy.GetConfigRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> cloud_deploy.Config:
         r"""Gets the configuration for a location.
@@ -3267,10 +3286,10 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def list_operations(
         self,
-        request: operations_pb2.ListOperationsRequest = None,
+        request: Optional[operations_pb2.ListOperationsRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operations_pb2.ListOperationsResponse:
         r"""Lists operations that match the specified filter in the request.
@@ -3321,10 +3340,10 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def get_operation(
         self,
-        request: operations_pb2.GetOperationRequest = None,
+        request: Optional[operations_pb2.GetOperationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operations_pb2.Operation:
         r"""Gets the latest state of a long-running operation.
@@ -3375,10 +3394,10 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def delete_operation(
         self,
-        request: operations_pb2.DeleteOperationRequest = None,
+        request: Optional[operations_pb2.DeleteOperationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes a long-running operation.
@@ -3430,10 +3449,10 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def cancel_operation(
         self,
-        request: operations_pb2.CancelOperationRequest = None,
+        request: Optional[operations_pb2.CancelOperationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Starts asynchronous cancellation on a long-running operation.
@@ -3484,10 +3503,10 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def set_iam_policy(
         self,
-        request: iam_policy_pb2.SetIamPolicyRequest = None,
+        request: Optional[iam_policy_pb2.SetIamPolicyRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> policy_pb2.Policy:
         r"""Sets the IAM access control policy on the specified function.
@@ -3604,10 +3623,10 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def get_iam_policy(
         self,
-        request: iam_policy_pb2.GetIamPolicyRequest = None,
+        request: Optional[iam_policy_pb2.GetIamPolicyRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> policy_pb2.Policy:
         r"""Gets the IAM access control policy for a function.
@@ -3725,10 +3744,10 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def test_iam_permissions(
         self,
-        request: iam_policy_pb2.TestIamPermissionsRequest = None,
+        request: Optional[iam_policy_pb2.TestIamPermissionsRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> iam_policy_pb2.TestIamPermissionsResponse:
         r"""Tests the specified IAM permissions against the IAM access control
@@ -3784,10 +3803,10 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def get_location(
         self,
-        request: locations_pb2.GetLocationRequest = None,
+        request: Optional[locations_pb2.GetLocationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> locations_pb2.Location:
         r"""Gets information about a location.
@@ -3838,10 +3857,10 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
     def list_locations(
         self,
-        request: locations_pb2.ListLocationsRequest = None,
+        request: Optional[locations_pb2.ListLocationsRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> locations_pb2.ListLocationsResponse:
         r"""Lists information about the supported locations for this service.
