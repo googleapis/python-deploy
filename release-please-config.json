@@ -7,7 +7,7 @@
         "google/cloud/deploy/gapic_version.py",
         {
           "type": "json",
-          "path": "samples/generated_samples/snippet_metadata_deploy_v1.json",
+          "path": "samples/generated_samples/snippet_metadata_google.cloud.deploy.v1.json",
           "jsonpath": "$.clientLibrary.version"
         }
       ]
