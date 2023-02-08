@@ -14,29 +14,31 @@
 # limitations under the License.
 #
 
-from google.auth.transport.requests import AuthorizedSession  # type: ignore
-import json  # type: ignore
-import grpc  # type: ignore
-from google.auth.transport.grpc import SslCredentials  # type: ignore
-from google.auth import credentials as ga_credentials  # type: ignore
-from google.api_core import exceptions as core_exceptions
-from google.api_core import retry as retries
-from google.api_core import rest_helpers
-from google.api_core import rest_streaming
-from google.api_core import path_template
-from google.api_core import gapic_v1
-
-from google.protobuf import json_format
-from google.api_core import operations_v1
-from google.iam.v1 import iam_policy_pb2  # type: ignore
-from google.iam.v1 import policy_pb2  # type: ignore
-from google.cloud.location import locations_pb2 # type: ignore
-from google.longrunning import operations_pb2
-from requests import __version__ as requests_version
 import dataclasses
+import json  # type: ignore
 import re
 from typing import Callable, Dict, List, Optional, Sequence, Tuple, Union
 import warnings
+
+from google.api_core import (
+    gapic_v1,
+    operations_v1,
+    path_template,
+    rest_helpers,
+    rest_streaming,
+)
+from google.api_core import exceptions as core_exceptions
+from google.api_core import retry as retries
+from google.auth import credentials as ga_credentials  # type: ignore
+from google.auth.transport.grpc import SslCredentials  # type: ignore
+from google.auth.transport.requests import AuthorizedSession  # type: ignore
+from google.cloud.location import locations_pb2  # type: ignore
+from google.iam.v1 import iam_policy_pb2  # type: ignore
+from google.iam.v1 import policy_pb2  # type: ignore
+from google.longrunning import operations_pb2
+from google.protobuf import json_format
+import grpc  # type: ignore
+from requests import __version__ as requests_version
 
 try:
     OptionalRetry = Union[retries.Retry, gapic_v1.method._MethodDefault]
@@ -44,11 +46,12 @@ except AttributeError:  # pragma: NO COVER
     OptionalRetry = Union[retries.Retry, object]  # type: ignore
 
 
-from google.cloud.deploy_v1.types import cloud_deploy
 from google.longrunning import operations_pb2  # type: ignore
 
-from .base import CloudDeployTransport, DEFAULT_CLIENT_INFO as BASE_DEFAULT_CLIENT_INFO
+from google.cloud.deploy_v1.types import cloud_deploy
 
+from .base import CloudDeployTransport
+from .base import DEFAULT_CLIENT_INFO as BASE_DEFAULT_CLIENT_INFO
 
 DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
     gapic_version=BASE_DEFAULT_CLIENT_INFO.gapic_version,
@@ -253,7 +256,12 @@ class CloudDeployRestInterceptor:
 
 
     """
-    def pre_abandon_release(self, request: cloud_deploy.AbandonReleaseRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_deploy.AbandonReleaseRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_abandon_release(
+        self,
+        request: cloud_deploy.AbandonReleaseRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_deploy.AbandonReleaseRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for abandon_release
 
         Override in a subclass to manipulate the request or metadata
@@ -261,7 +269,9 @@ class CloudDeployRestInterceptor:
         """
         return request, metadata
 
-    def post_abandon_release(self, response: cloud_deploy.AbandonReleaseResponse) -> cloud_deploy.AbandonReleaseResponse:
+    def post_abandon_release(
+        self, response: cloud_deploy.AbandonReleaseResponse
+    ) -> cloud_deploy.AbandonReleaseResponse:
         """Post-rpc interceptor for abandon_release
 
         Override in a subclass to manipulate the response
@@ -269,7 +279,12 @@ class CloudDeployRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_approve_rollout(self, request: cloud_deploy.ApproveRolloutRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_deploy.ApproveRolloutRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_approve_rollout(
+        self,
+        request: cloud_deploy.ApproveRolloutRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_deploy.ApproveRolloutRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for approve_rollout
 
         Override in a subclass to manipulate the request or metadata
@@ -277,7 +292,9 @@ class CloudDeployRestInterceptor:
         """
         return request, metadata
 
-    def post_approve_rollout(self, response: cloud_deploy.ApproveRolloutResponse) -> cloud_deploy.ApproveRolloutResponse:
+    def post_approve_rollout(
+        self, response: cloud_deploy.ApproveRolloutResponse
+    ) -> cloud_deploy.ApproveRolloutResponse:
         """Post-rpc interceptor for approve_rollout
 
         Override in a subclass to manipulate the response
@@ -285,7 +302,12 @@ class CloudDeployRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_create_delivery_pipeline(self, request: cloud_deploy.CreateDeliveryPipelineRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_deploy.CreateDeliveryPipelineRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_create_delivery_pipeline(
+        self,
+        request: cloud_deploy.CreateDeliveryPipelineRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_deploy.CreateDeliveryPipelineRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for create_delivery_pipeline
 
         Override in a subclass to manipulate the request or metadata
@@ -293,7 +315,9 @@ class CloudDeployRestInterceptor:
         """
         return request, metadata
 
-    def post_create_delivery_pipeline(self, response: operations_pb2.Operation) -> operations_pb2.Operation:
+    def post_create_delivery_pipeline(
+        self, response: operations_pb2.Operation
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for create_delivery_pipeline
 
         Override in a subclass to manipulate the response
@@ -301,7 +325,12 @@ class CloudDeployRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_create_release(self, request: cloud_deploy.CreateReleaseRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_deploy.CreateReleaseRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_create_release(
+        self,
+        request: cloud_deploy.CreateReleaseRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_deploy.CreateReleaseRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for create_release
 
         Override in a subclass to manipulate the request or metadata
@@ -309,7 +338,9 @@ class CloudDeployRestInterceptor:
         """
         return request, metadata
 
-    def post_create_release(self, response: operations_pb2.Operation) -> operations_pb2.Operation:
+    def post_create_release(
+        self, response: operations_pb2.Operation
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for create_release
 
         Override in a subclass to manipulate the response
@@ -317,7 +348,12 @@ class CloudDeployRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_create_rollout(self, request: cloud_deploy.CreateRolloutRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_deploy.CreateRolloutRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_create_rollout(
+        self,
+        request: cloud_deploy.CreateRolloutRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_deploy.CreateRolloutRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for create_rollout
 
         Override in a subclass to manipulate the request or metadata
@@ -325,7 +361,9 @@ class CloudDeployRestInterceptor:
         """
         return request, metadata
 
-    def post_create_rollout(self, response: operations_pb2.Operation) -> operations_pb2.Operation:
+    def post_create_rollout(
+        self, response: operations_pb2.Operation
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for create_rollout
 
         Override in a subclass to manipulate the response
@@ -333,7 +371,12 @@ class CloudDeployRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_create_target(self, request: cloud_deploy.CreateTargetRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_deploy.CreateTargetRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_create_target(
+        self,
+        request: cloud_deploy.CreateTargetRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_deploy.CreateTargetRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for create_target
 
         Override in a subclass to manipulate the request or metadata
@@ -341,7 +384,9 @@ class CloudDeployRestInterceptor:
         """
         return request, metadata
 
-    def post_create_target(self, response: operations_pb2.Operation) -> operations_pb2.Operation:
+    def post_create_target(
+        self, response: operations_pb2.Operation
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for create_target
 
         Override in a subclass to manipulate the response
@@ -349,7 +394,12 @@ class CloudDeployRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_delete_delivery_pipeline(self, request: cloud_deploy.DeleteDeliveryPipelineRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_deploy.DeleteDeliveryPipelineRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_delete_delivery_pipeline(
+        self,
+        request: cloud_deploy.DeleteDeliveryPipelineRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_deploy.DeleteDeliveryPipelineRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for delete_delivery_pipeline
 
         Override in a subclass to manipulate the request or metadata
@@ -357,7 +407,9 @@ class CloudDeployRestInterceptor:
         """
         return request, metadata
 
-    def post_delete_delivery_pipeline(self, response: operations_pb2.Operation) -> operations_pb2.Operation:
+    def post_delete_delivery_pipeline(
+        self, response: operations_pb2.Operation
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for delete_delivery_pipeline
 
         Override in a subclass to manipulate the response
@@ -365,7 +417,12 @@ class CloudDeployRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_delete_target(self, request: cloud_deploy.DeleteTargetRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_deploy.DeleteTargetRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_delete_target(
+        self,
+        request: cloud_deploy.DeleteTargetRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_deploy.DeleteTargetRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for delete_target
 
         Override in a subclass to manipulate the request or metadata
@@ -373,7 +430,9 @@ class CloudDeployRestInterceptor:
         """
         return request, metadata
 
-    def post_delete_target(self, response: operations_pb2.Operation) -> operations_pb2.Operation:
+    def post_delete_target(
+        self, response: operations_pb2.Operation
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for delete_target
 
         Override in a subclass to manipulate the response
@@ -381,7 +440,12 @@ class CloudDeployRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_get_config(self, request: cloud_deploy.GetConfigRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_deploy.GetConfigRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_get_config(
+        self,
+        request: cloud_deploy.GetConfigRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_deploy.GetConfigRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for get_config
 
         Override in a subclass to manipulate the request or metadata
@@ -397,7 +461,12 @@ class CloudDeployRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_get_delivery_pipeline(self, request: cloud_deploy.GetDeliveryPipelineRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_deploy.GetDeliveryPipelineRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_get_delivery_pipeline(
+        self,
+        request: cloud_deploy.GetDeliveryPipelineRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_deploy.GetDeliveryPipelineRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for get_delivery_pipeline
 
         Override in a subclass to manipulate the request or metadata
@@ -405,7 +474,9 @@ class CloudDeployRestInterceptor:
         """
         return request, metadata
 
-    def post_get_delivery_pipeline(self, response: cloud_deploy.DeliveryPipeline) -> cloud_deploy.DeliveryPipeline:
+    def post_get_delivery_pipeline(
+        self, response: cloud_deploy.DeliveryPipeline
+    ) -> cloud_deploy.DeliveryPipeline:
         """Post-rpc interceptor for get_delivery_pipeline
 
         Override in a subclass to manipulate the response
@@ -413,7 +484,12 @@ class CloudDeployRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_get_job_run(self, request: cloud_deploy.GetJobRunRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_deploy.GetJobRunRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_get_job_run(
+        self,
+        request: cloud_deploy.GetJobRunRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_deploy.GetJobRunRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for get_job_run
 
         Override in a subclass to manipulate the request or metadata
@@ -429,7 +505,12 @@ class CloudDeployRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_get_release(self, request: cloud_deploy.GetReleaseRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_deploy.GetReleaseRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_get_release(
+        self,
+        request: cloud_deploy.GetReleaseRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_deploy.GetReleaseRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for get_release
 
         Override in a subclass to manipulate the request or metadata
@@ -445,7 +526,12 @@ class CloudDeployRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_get_rollout(self, request: cloud_deploy.GetRolloutRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_deploy.GetRolloutRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_get_rollout(
+        self,
+        request: cloud_deploy.GetRolloutRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_deploy.GetRolloutRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for get_rollout
 
         Override in a subclass to manipulate the request or metadata
@@ -461,7 +547,12 @@ class CloudDeployRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_get_target(self, request: cloud_deploy.GetTargetRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_deploy.GetTargetRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_get_target(
+        self,
+        request: cloud_deploy.GetTargetRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_deploy.GetTargetRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for get_target
 
         Override in a subclass to manipulate the request or metadata
@@ -477,7 +568,12 @@ class CloudDeployRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_list_delivery_pipelines(self, request: cloud_deploy.ListDeliveryPipelinesRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_deploy.ListDeliveryPipelinesRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_list_delivery_pipelines(
+        self,
+        request: cloud_deploy.ListDeliveryPipelinesRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_deploy.ListDeliveryPipelinesRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for list_delivery_pipelines
 
         Override in a subclass to manipulate the request or metadata
@@ -485,7 +581,9 @@ class CloudDeployRestInterceptor:
         """
         return request, metadata
 
-    def post_list_delivery_pipelines(self, response: cloud_deploy.ListDeliveryPipelinesResponse) -> cloud_deploy.ListDeliveryPipelinesResponse:
+    def post_list_delivery_pipelines(
+        self, response: cloud_deploy.ListDeliveryPipelinesResponse
+    ) -> cloud_deploy.ListDeliveryPipelinesResponse:
         """Post-rpc interceptor for list_delivery_pipelines
 
         Override in a subclass to manipulate the response
@@ -493,7 +591,12 @@ class CloudDeployRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_list_job_runs(self, request: cloud_deploy.ListJobRunsRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_deploy.ListJobRunsRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_list_job_runs(
+        self,
+        request: cloud_deploy.ListJobRunsRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_deploy.ListJobRunsRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for list_job_runs
 
         Override in a subclass to manipulate the request or metadata
@@ -501,7 +604,9 @@ class CloudDeployRestInterceptor:
         """
         return request, metadata
 
-    def post_list_job_runs(self, response: cloud_deploy.ListJobRunsResponse) -> cloud_deploy.ListJobRunsResponse:
+    def post_list_job_runs(
+        self, response: cloud_deploy.ListJobRunsResponse
+    ) -> cloud_deploy.ListJobRunsResponse:
         """Post-rpc interceptor for list_job_runs
 
         Override in a subclass to manipulate the response
@@ -509,7 +614,12 @@ class CloudDeployRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_list_releases(self, request: cloud_deploy.ListReleasesRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_deploy.ListReleasesRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_list_releases(
+        self,
+        request: cloud_deploy.ListReleasesRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_deploy.ListReleasesRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for list_releases
 
         Override in a subclass to manipulate the request or metadata
@@ -517,7 +627,9 @@ class CloudDeployRestInterceptor:
         """
         return request, metadata
 
-    def post_list_releases(self, response: cloud_deploy.ListReleasesResponse) -> cloud_deploy.ListReleasesResponse:
+    def post_list_releases(
+        self, response: cloud_deploy.ListReleasesResponse
+    ) -> cloud_deploy.ListReleasesResponse:
         """Post-rpc interceptor for list_releases
 
         Override in a subclass to manipulate the response
@@ -525,7 +637,12 @@ class CloudDeployRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_list_rollouts(self, request: cloud_deploy.ListRolloutsRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_deploy.ListRolloutsRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_list_rollouts(
+        self,
+        request: cloud_deploy.ListRolloutsRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_deploy.ListRolloutsRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for list_rollouts
 
         Override in a subclass to manipulate the request or metadata
@@ -533,7 +650,9 @@ class CloudDeployRestInterceptor:
         """
         return request, metadata
 
-    def post_list_rollouts(self, response: cloud_deploy.ListRolloutsResponse) -> cloud_deploy.ListRolloutsResponse:
+    def post_list_rollouts(
+        self, response: cloud_deploy.ListRolloutsResponse
+    ) -> cloud_deploy.ListRolloutsResponse:
         """Post-rpc interceptor for list_rollouts
 
         Override in a subclass to manipulate the response
@@ -541,7 +660,12 @@ class CloudDeployRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_list_targets(self, request: cloud_deploy.ListTargetsRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_deploy.ListTargetsRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_list_targets(
+        self,
+        request: cloud_deploy.ListTargetsRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_deploy.ListTargetsRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for list_targets
 
         Override in a subclass to manipulate the request or metadata
@@ -549,7 +673,9 @@ class CloudDeployRestInterceptor:
         """
         return request, metadata
 
-    def post_list_targets(self, response: cloud_deploy.ListTargetsResponse) -> cloud_deploy.ListTargetsResponse:
+    def post_list_targets(
+        self, response: cloud_deploy.ListTargetsResponse
+    ) -> cloud_deploy.ListTargetsResponse:
         """Post-rpc interceptor for list_targets
 
         Override in a subclass to manipulate the response
@@ -557,7 +683,10 @@ class CloudDeployRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_retry_job(self, request: cloud_deploy.RetryJobRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_deploy.RetryJobRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_retry_job(
+        self, request: cloud_deploy.RetryJobRequest, metadata: Sequence[Tuple[str, str]]
+    ) -> Tuple[cloud_deploy.RetryJobRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for retry_job
 
         Override in a subclass to manipulate the request or metadata
@@ -565,7 +694,9 @@ class CloudDeployRestInterceptor:
         """
         return request, metadata
 
-    def post_retry_job(self, response: cloud_deploy.RetryJobResponse) -> cloud_deploy.RetryJobResponse:
+    def post_retry_job(
+        self, response: cloud_deploy.RetryJobResponse
+    ) -> cloud_deploy.RetryJobResponse:
         """Post-rpc interceptor for retry_job
 
         Override in a subclass to manipulate the response
@@ -573,7 +704,12 @@ class CloudDeployRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_update_delivery_pipeline(self, request: cloud_deploy.UpdateDeliveryPipelineRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_deploy.UpdateDeliveryPipelineRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_update_delivery_pipeline(
+        self,
+        request: cloud_deploy.UpdateDeliveryPipelineRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_deploy.UpdateDeliveryPipelineRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for update_delivery_pipeline
 
         Override in a subclass to manipulate the request or metadata
@@ -581,7 +717,9 @@ class CloudDeployRestInterceptor:
         """
         return request, metadata
 
-    def post_update_delivery_pipeline(self, response: operations_pb2.Operation) -> operations_pb2.Operation:
+    def post_update_delivery_pipeline(
+        self, response: operations_pb2.Operation
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for update_delivery_pipeline
 
         Override in a subclass to manipulate the response
@@ -589,7 +727,12 @@ class CloudDeployRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_update_target(self, request: cloud_deploy.UpdateTargetRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_deploy.UpdateTargetRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_update_target(
+        self,
+        request: cloud_deploy.UpdateTargetRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_deploy.UpdateTargetRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for update_target
 
         Override in a subclass to manipulate the request or metadata
@@ -597,7 +740,9 @@ class CloudDeployRestInterceptor:
         """
         return request, metadata
 
-    def post_update_target(self, response: operations_pb2.Operation) -> operations_pb2.Operation:
+    def post_update_target(
+        self, response: operations_pb2.Operation
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for update_target
 
         Override in a subclass to manipulate the response
@@ -606,7 +751,11 @@ class CloudDeployRestInterceptor:
         """
         return response
 
-    def pre_get_location(self, request: locations_pb2.GetLocationRequest, metadata: Sequence[Tuple[str, str]]) -> locations_pb2.Location:
+    def pre_get_location(
+        self,
+        request: locations_pb2.GetLocationRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> locations_pb2.Location:
         """Pre-rpc interceptor for get_location
 
         Override in a subclass to manipulate the request or metadata
@@ -614,7 +763,9 @@ class CloudDeployRestInterceptor:
         """
         return request, metadata
 
-    def post_get_location(self, response: locations_pb2.GetLocationRequest) -> locations_pb2.Location:
+    def post_get_location(
+        self, response: locations_pb2.GetLocationRequest
+    ) -> locations_pb2.Location:
         """Post-rpc interceptor for get_location
 
         Override in a subclass to manipulate the response
@@ -622,7 +773,12 @@ class CloudDeployRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_list_locations(self, request: locations_pb2.ListLocationsRequest, metadata: Sequence[Tuple[str, str]]) -> locations_pb2.ListLocationsResponse:
+
+    def pre_list_locations(
+        self,
+        request: locations_pb2.ListLocationsRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> locations_pb2.ListLocationsResponse:
         """Pre-rpc interceptor for list_locations
 
         Override in a subclass to manipulate the request or metadata
@@ -630,7 +786,9 @@ class CloudDeployRestInterceptor:
         """
         return request, metadata
 
-    def post_list_locations(self, response: locations_pb2.ListLocationsRequest) -> locations_pb2.ListLocationsResponse:
+    def post_list_locations(
+        self, response: locations_pb2.ListLocationsRequest
+    ) -> locations_pb2.ListLocationsResponse:
         """Post-rpc interceptor for list_locations
 
         Override in a subclass to manipulate the response
@@ -638,7 +796,12 @@ class CloudDeployRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_get_iam_policy(self, request: iam_policy_pb2.GetIamPolicyRequest, metadata: Sequence[Tuple[str, str]]) -> policy_pb2.Policy:
+
+    def pre_get_iam_policy(
+        self,
+        request: iam_policy_pb2.GetIamPolicyRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> policy_pb2.Policy:
         """Pre-rpc interceptor for get_iam_policy
 
         Override in a subclass to manipulate the request or metadata
@@ -646,7 +809,9 @@ class CloudDeployRestInterceptor:
         """
         return request, metadata
 
-    def post_get_iam_policy(self, response: iam_policy_pb2.GetIamPolicyRequest) -> policy_pb2.Policy:
+    def post_get_iam_policy(
+        self, response: iam_policy_pb2.GetIamPolicyRequest
+    ) -> policy_pb2.Policy:
         """Post-rpc interceptor for get_iam_policy
 
         Override in a subclass to manipulate the response
@@ -654,7 +819,12 @@ class CloudDeployRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_set_iam_policy(self, request: iam_policy_pb2.SetIamPolicyRequest, metadata: Sequence[Tuple[str, str]]) -> policy_pb2.Policy:
+
+    def pre_set_iam_policy(
+        self,
+        request: iam_policy_pb2.SetIamPolicyRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> policy_pb2.Policy:
         """Pre-rpc interceptor for set_iam_policy
 
         Override in a subclass to manipulate the request or metadata
@@ -662,7 +832,9 @@ class CloudDeployRestInterceptor:
         """
         return request, metadata
 
-    def post_set_iam_policy(self, response: iam_policy_pb2.SetIamPolicyRequest) -> policy_pb2.Policy:
+    def post_set_iam_policy(
+        self, response: iam_policy_pb2.SetIamPolicyRequest
+    ) -> policy_pb2.Policy:
         """Post-rpc interceptor for set_iam_policy
 
         Override in a subclass to manipulate the response
@@ -670,7 +842,12 @@ class CloudDeployRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_test_iam_permissions(self, request: iam_policy_pb2.TestIamPermissionsRequest, metadata: Sequence[Tuple[str, str]]) -> iam_policy_pb2.TestIamPermissionsResponse:
+
+    def pre_test_iam_permissions(
+        self,
+        request: iam_policy_pb2.TestIamPermissionsRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> iam_policy_pb2.TestIamPermissionsResponse:
         """Pre-rpc interceptor for test_iam_permissions
 
         Override in a subclass to manipulate the request or metadata
@@ -678,7 +855,9 @@ class CloudDeployRestInterceptor:
         """
         return request, metadata
 
-    def post_test_iam_permissions(self, response: iam_policy_pb2.TestIamPermissionsRequest) -> iam_policy_pb2.TestIamPermissionsResponse:
+    def post_test_iam_permissions(
+        self, response: iam_policy_pb2.TestIamPermissionsRequest
+    ) -> iam_policy_pb2.TestIamPermissionsResponse:
         """Post-rpc interceptor for test_iam_permissions
 
         Override in a subclass to manipulate the response
@@ -686,7 +865,12 @@ class CloudDeployRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_cancel_operation(self, request: operations_pb2.CancelOperationRequest, metadata: Sequence[Tuple[str, str]]) -> None:
+
+    def pre_cancel_operation(
+        self,
+        request: operations_pb2.CancelOperationRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> None:
         """Pre-rpc interceptor for cancel_operation
 
         Override in a subclass to manipulate the request or metadata
@@ -694,7 +878,9 @@ class CloudDeployRestInterceptor:
         """
         return request, metadata
 
-    def post_cancel_operation(self, response: operations_pb2.CancelOperationRequest) -> None:
+    def post_cancel_operation(
+        self, response: operations_pb2.CancelOperationRequest
+    ) -> None:
         """Post-rpc interceptor for cancel_operation
 
         Override in a subclass to manipulate the response
@@ -702,7 +888,12 @@ class CloudDeployRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_delete_operation(self, request: operations_pb2.DeleteOperationRequest, metadata: Sequence[Tuple[str, str]]) -> None:
+
+    def pre_delete_operation(
+        self,
+        request: operations_pb2.DeleteOperationRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> None:
         """Pre-rpc interceptor for delete_operation
 
         Override in a subclass to manipulate the request or metadata
@@ -710,7 +901,9 @@ class CloudDeployRestInterceptor:
         """
         return request, metadata
 
-    def post_delete_operation(self, response: operations_pb2.DeleteOperationRequest) -> None:
+    def post_delete_operation(
+        self, response: operations_pb2.DeleteOperationRequest
+    ) -> None:
         """Post-rpc interceptor for delete_operation
 
         Override in a subclass to manipulate the response
@@ -718,7 +911,12 @@ class CloudDeployRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_get_operation(self, request: operations_pb2.GetOperationRequest, metadata: Sequence[Tuple[str, str]]) -> operations_pb2.Operation:
+
+    def pre_get_operation(
+        self,
+        request: operations_pb2.GetOperationRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> operations_pb2.Operation:
         """Pre-rpc interceptor for get_operation
 
         Override in a subclass to manipulate the request or metadata
@@ -726,7 +924,9 @@ class CloudDeployRestInterceptor:
         """
         return request, metadata
 
-    def post_get_operation(self, response: operations_pb2.GetOperationRequest) -> operations_pb2.Operation:
+    def post_get_operation(
+        self, response: operations_pb2.GetOperationRequest
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for get_operation
 
         Override in a subclass to manipulate the response
@@ -734,7 +934,12 @@ class CloudDeployRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_list_operations(self, request: operations_pb2.ListOperationsRequest, metadata: Sequence[Tuple[str, str]]) -> operations_pb2.ListOperationsResponse:
+
+    def pre_list_operations(
+        self,
+        request: operations_pb2.ListOperationsRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> operations_pb2.ListOperationsResponse:
         """Pre-rpc interceptor for list_operations
 
         Override in a subclass to manipulate the request or metadata
@@ -742,7 +947,9 @@ class CloudDeployRestInterceptor:
         """
         return request, metadata
 
-    def post_list_operations(self, response: operations_pb2.ListOperationsRequest) -> operations_pb2.ListOperationsResponse:
+    def post_list_operations(
+        self, response: operations_pb2.ListOperationsRequest
+    ) -> operations_pb2.ListOperationsResponse:
         """Post-rpc interceptor for list_operations
 
         Override in a subclass to manipulate the response
@@ -774,20 +981,21 @@ class CloudDeployRestTransport(CloudDeployTransport):
 
     """
 
-    def __init__(self, *,
-            host: str = 'clouddeploy.googleapis.com',
-            credentials: Optional[ga_credentials.Credentials] = None,
-            credentials_file: Optional[str] = None,
-            scopes: Optional[Sequence[str]] = None,
-            client_cert_source_for_mtls: Optional[Callable[[
-                ], Tuple[bytes, bytes]]] = None,
-            quota_project_id: Optional[str] = None,
-            client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
-            always_use_jwt_access: Optional[bool] = False,
-            url_scheme: str = 'https',
-            interceptor: Optional[CloudDeployRestInterceptor] = None,
-            api_audience: Optional[str] = None,
-            ) -> None:
+    def __init__(
+        self,
+        *,
+        host: str = "clouddeploy.googleapis.com",
+        credentials: Optional[ga_credentials.Credentials] = None,
+        credentials_file: Optional[str] = None,
+        scopes: Optional[Sequence[str]] = None,
+        client_cert_source_for_mtls: Optional[Callable[[], Tuple[bytes, bytes]]] = None,
+        quota_project_id: Optional[str] = None,
+        client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
+        always_use_jwt_access: Optional[bool] = False,
+        url_scheme: str = "https",
+        interceptor: Optional[CloudDeployRestInterceptor] = None,
+        api_audience: Optional[str] = None,
+    ) -> None:
         """Instantiate the transport.
 
         Args:
@@ -826,7 +1034,9 @@ class CloudDeployRestTransport(CloudDeployTransport):
         # credentials object
         maybe_url_match = re.match("^(?P<scheme>http(?:s)?://)?(?P<host>.*)$", host)
         if maybe_url_match is None:
-            raise ValueError(f"Unexpected hostname structure: {host}")  # pragma: NO COVER
+            raise ValueError(
+                f"Unexpected hostname structure: {host}"
+            )  # pragma: NO COVER
 
         url_match_items = maybe_url_match.groupdict()
 
@@ -837,10 +1047,11 @@ class CloudDeployRestTransport(CloudDeployTransport):
             credentials=credentials,
             client_info=client_info,
             always_use_jwt_access=always_use_jwt_access,
-            api_audience=api_audience
+            api_audience=api_audience,
         )
         self._session = AuthorizedSession(
-            self._credentials, default_host=self.DEFAULT_HOST)
+            self._credentials, default_host=self.DEFAULT_HOST
+        )
         self._operations_client: Optional[operations_v1.AbstractOperationsClient] = None
         if client_cert_source_for_mtls:
             self._session.configure_mtls_channel(client_cert_source_for_mtls)
@@ -857,42 +1068,45 @@ class CloudDeployRestTransport(CloudDeployTransport):
         # Only create a new client if we do not already have one.
         if self._operations_client is None:
             http_options: Dict[str, List[Dict[str, str]]] = {
-                'google.longrunning.Operations.CancelOperation': [
+                "google.longrunning.Operations.CancelOperation": [
                     {
-                        'method': 'post',
-                        'uri': '/v1/{name=projects/*/locations/*/operations/*}:cancel',
-                        'body': '*',
+                        "method": "post",
+                        "uri": "/v1/{name=projects/*/locations/*/operations/*}:cancel",
+                        "body": "*",
                     },
                 ],
-                'google.longrunning.Operations.DeleteOperation': [
+                "google.longrunning.Operations.DeleteOperation": [
                     {
-                        'method': 'delete',
-                        'uri': '/v1/{name=projects/*/locations/*/operations/*}',
+                        "method": "delete",
+                        "uri": "/v1/{name=projects/*/locations/*/operations/*}",
                     },
                 ],
-                'google.longrunning.Operations.GetOperation': [
+                "google.longrunning.Operations.GetOperation": [
                     {
-                        'method': 'get',
-                        'uri': '/v1/{name=projects/*/locations/*/operations/*}',
+                        "method": "get",
+                        "uri": "/v1/{name=projects/*/locations/*/operations/*}",
                     },
                 ],
-                'google.longrunning.Operations.ListOperations': [
+                "google.longrunning.Operations.ListOperations": [
                     {
-                        'method': 'get',
-                        'uri': '/v1/{name=projects/*/locations/*}/operations',
+                        "method": "get",
+                        "uri": "/v1/{name=projects/*/locations/*}/operations",
                     },
                 ],
             }
 
             rest_transport = operations_v1.OperationsRestTransport(
-                    host=self._host,
-                    # use the credentials which are saved
-                    credentials=self._credentials,
-                    scopes=self._scopes,
-                    http_options=http_options,
-                    path_prefix="v1")
+                host=self._host,
+                # use the credentials which are saved
+                credentials=self._credentials,
+                scopes=self._scopes,
+                http_options=http_options,
+                path_prefix="v1",
+            )
 
-            self._operations_client = operations_v1.AbstractOperationsClient(transport=rest_transport)
+            self._operations_client = operations_v1.AbstractOperationsClient(
+                transport=rest_transport
+            )
 
         # Return the client from cache.
         return self._operations_client
@@ -901,19 +1115,24 @@ class CloudDeployRestTransport(CloudDeployTransport):
         def __hash__(self):
             return hash("AbandonRelease")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_deploy.AbandonReleaseRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> cloud_deploy.AbandonReleaseResponse:
+        def __call__(
+            self,
+            request: cloud_deploy.AbandonReleaseRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> cloud_deploy.AbandonReleaseResponse:
             r"""Call the abandon release method over HTTP.
 
             Args:
@@ -930,11 +1149,12 @@ class CloudDeployRestTransport(CloudDeployTransport):
                     The response object for ``AbandonRelease``.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{name=projects/*/locations/*/deliveryPipelines/*/releases/*}:abandon',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{name=projects/*/locations/*/deliveryPipelines/*/releases/*}:abandon",
+                    "body": "*",
+                },
             ]
             request, metadata = self._interceptor.pre_abandon_release(request, metadata)
             pb_request = cloud_deploy.AbandonReleaseRequest.pb(request)
@@ -943,33 +1163,35 @@ class CloudDeployRestTransport(CloudDeployTransport):
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -988,19 +1210,24 @@ class CloudDeployRestTransport(CloudDeployTransport):
         def __hash__(self):
             return hash("ApproveRollout")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_deploy.ApproveRolloutRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> cloud_deploy.ApproveRolloutResponse:
+        def __call__(
+            self,
+            request: cloud_deploy.ApproveRolloutRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> cloud_deploy.ApproveRolloutResponse:
             r"""Call the approve rollout method over HTTP.
 
             Args:
@@ -1017,11 +1244,12 @@ class CloudDeployRestTransport(CloudDeployTransport):
                     The response object from ``ApproveRollout``.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{name=projects/*/locations/*/deliveryPipelines/*/releases/*/rollouts/*}:approve',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{name=projects/*/locations/*/deliveryPipelines/*/releases/*/rollouts/*}:approve",
+                    "body": "*",
+                },
             ]
             request, metadata = self._interceptor.pre_approve_rollout(request, metadata)
             pb_request = cloud_deploy.ApproveRolloutRequest.pb(request)
@@ -1030,33 +1258,35 @@ class CloudDeployRestTransport(CloudDeployTransport):
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1075,19 +1305,26 @@ class CloudDeployRestTransport(CloudDeployTransport):
         def __hash__(self):
             return hash("CreateDeliveryPipeline")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-            "deliveryPipelineId" : "",        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {
+            "deliveryPipelineId": "",
+        }
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_deploy.CreateDeliveryPipelineRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: cloud_deploy.CreateDeliveryPipelineRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
             r"""Call the create delivery pipeline method over HTTP.
 
             Args:
@@ -1107,46 +1344,51 @@ class CloudDeployRestTransport(CloudDeployTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{parent=projects/*/locations/*}/deliveryPipelines',
-                'body': 'delivery_pipeline',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{parent=projects/*/locations/*}/deliveryPipelines",
+                    "body": "delivery_pipeline",
+                },
             ]
-            request, metadata = self._interceptor.pre_create_delivery_pipeline(request, metadata)
+            request, metadata = self._interceptor.pre_create_delivery_pipeline(
+                request, metadata
+            )
             pb_request = cloud_deploy.CreateDeliveryPipelineRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1163,19 +1405,26 @@ class CloudDeployRestTransport(CloudDeployTransport):
         def __hash__(self):
             return hash("CreateRelease")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-            "releaseId" : "",        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {
+            "releaseId": "",
+        }
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_deploy.CreateReleaseRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: cloud_deploy.CreateReleaseRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
             r"""Call the create release method over HTTP.
 
             Args:
@@ -1195,11 +1444,12 @@ class CloudDeployRestTransport(CloudDeployTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{parent=projects/*/locations/*/deliveryPipelines/*}/releases',
-                'body': 'release',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{parent=projects/*/locations/*/deliveryPipelines/*}/releases",
+                    "body": "release",
+                },
             ]
             request, metadata = self._interceptor.pre_create_release(request, metadata)
             pb_request = cloud_deploy.CreateReleaseRequest.pb(request)
@@ -1208,33 +1458,35 @@ class CloudDeployRestTransport(CloudDeployTransport):
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1251,19 +1503,26 @@ class CloudDeployRestTransport(CloudDeployTransport):
         def __hash__(self):
             return hash("CreateRollout")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-            "rolloutId" : "",        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {
+            "rolloutId": "",
+        }
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_deploy.CreateRolloutRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: cloud_deploy.CreateRolloutRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
             r"""Call the create rollout method over HTTP.
 
             Args:
@@ -1285,11 +1544,12 @@ class CloudDeployRestTransport(CloudDeployTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{parent=projects/*/locations/*/deliveryPipelines/*/releases/*}/rollouts',
-                'body': 'rollout',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{parent=projects/*/locations/*/deliveryPipelines/*/releases/*}/rollouts",
+                    "body": "rollout",
+                },
             ]
             request, metadata = self._interceptor.pre_create_rollout(request, metadata)
             pb_request = cloud_deploy.CreateRolloutRequest.pb(request)
@@ -1298,33 +1558,35 @@ class CloudDeployRestTransport(CloudDeployTransport):
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1341,19 +1603,26 @@ class CloudDeployRestTransport(CloudDeployTransport):
         def __hash__(self):
             return hash("CreateTarget")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-            "targetId" : "",        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {
+            "targetId": "",
+        }
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_deploy.CreateTargetRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: cloud_deploy.CreateTargetRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
             r"""Call the create target method over HTTP.
 
             Args:
@@ -1373,11 +1642,12 @@ class CloudDeployRestTransport(CloudDeployTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{parent=projects/*/locations/*}/targets',
-                'body': 'target',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{parent=projects/*/locations/*}/targets",
+                    "body": "target",
+                },
             ]
             request, metadata = self._interceptor.pre_create_target(request, metadata)
             pb_request = cloud_deploy.CreateTargetRequest.pb(request)
@@ -1386,33 +1656,35 @@ class CloudDeployRestTransport(CloudDeployTransport):
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1429,19 +1701,24 @@ class CloudDeployRestTransport(CloudDeployTransport):
         def __hash__(self):
             return hash("DeleteDeliveryPipeline")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_deploy.DeleteDeliveryPipelineRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: cloud_deploy.DeleteDeliveryPipelineRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
             r"""Call the delete delivery pipeline method over HTTP.
 
             Args:
@@ -1461,37 +1738,42 @@ class CloudDeployRestTransport(CloudDeployTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'delete',
-                'uri': '/v1/{name=projects/*/locations/*/deliveryPipelines/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "delete",
+                    "uri": "/v1/{name=projects/*/locations/*/deliveryPipelines/*}",
+                },
             ]
-            request, metadata = self._interceptor.pre_delete_delivery_pipeline(request, metadata)
+            request, metadata = self._interceptor.pre_delete_delivery_pipeline(
+                request, metadata
+            )
             pb_request = cloud_deploy.DeleteDeliveryPipelineRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1508,19 +1790,24 @@ class CloudDeployRestTransport(CloudDeployTransport):
         def __hash__(self):
             return hash("DeleteTarget")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_deploy.DeleteTargetRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: cloud_deploy.DeleteTargetRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
             r"""Call the delete target method over HTTP.
 
             Args:
@@ -1540,37 +1827,40 @@ class CloudDeployRestTransport(CloudDeployTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'delete',
-                'uri': '/v1/{name=projects/*/locations/*/targets/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "delete",
+                    "uri": "/v1/{name=projects/*/locations/*/targets/*}",
+                },
             ]
             request, metadata = self._interceptor.pre_delete_target(request, metadata)
             pb_request = cloud_deploy.DeleteTargetRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1587,19 +1877,24 @@ class CloudDeployRestTransport(CloudDeployTransport):
         def __hash__(self):
             return hash("GetConfig")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_deploy.GetConfigRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> cloud_deploy.Config:
+        def __call__(
+            self,
+            request: cloud_deploy.GetConfigRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> cloud_deploy.Config:
             r"""Call the get config method over HTTP.
 
             Args:
@@ -1616,37 +1911,40 @@ class CloudDeployRestTransport(CloudDeployTransport):
                     Service-wide configuration.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{name=projects/*/locations/*/config}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=projects/*/locations/*/config}",
+                },
             ]
             request, metadata = self._interceptor.pre_get_config(request, metadata)
             pb_request = cloud_deploy.GetConfigRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1665,19 +1963,24 @@ class CloudDeployRestTransport(CloudDeployTransport):
         def __hash__(self):
             return hash("GetDeliveryPipeline")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_deploy.GetDeliveryPipelineRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> cloud_deploy.DeliveryPipeline:
+        def __call__(
+            self,
+            request: cloud_deploy.GetDeliveryPipelineRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> cloud_deploy.DeliveryPipeline:
             r"""Call the get delivery pipeline method over HTTP.
 
             Args:
@@ -1699,37 +2002,42 @@ class CloudDeployRestTransport(CloudDeployTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{name=projects/*/locations/*/deliveryPipelines/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=projects/*/locations/*/deliveryPipelines/*}",
+                },
             ]
-            request, metadata = self._interceptor.pre_get_delivery_pipeline(request, metadata)
+            request, metadata = self._interceptor.pre_get_delivery_pipeline(
+                request, metadata
+            )
             pb_request = cloud_deploy.GetDeliveryPipelineRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1748,19 +2056,24 @@ class CloudDeployRestTransport(CloudDeployTransport):
         def __hash__(self):
             return hash("GetJobRun")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_deploy.GetJobRunRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> cloud_deploy.JobRun:
+        def __call__(
+            self,
+            request: cloud_deploy.GetJobRunRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> cloud_deploy.JobRun:
             r"""Call the get job run method over HTTP.
 
             Args:
@@ -1783,37 +2096,40 @@ class CloudDeployRestTransport(CloudDeployTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{name=projects/*/locations/*/deliveryPipelines/*/releases/*/rollouts/*/jobRuns/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=projects/*/locations/*/deliveryPipelines/*/releases/*/rollouts/*/jobRuns/*}",
+                },
             ]
             request, metadata = self._interceptor.pre_get_job_run(request, metadata)
             pb_request = cloud_deploy.GetJobRunRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1832,19 +2148,24 @@ class CloudDeployRestTransport(CloudDeployTransport):
         def __hash__(self):
             return hash("GetRelease")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_deploy.GetReleaseRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> cloud_deploy.Release:
+        def __call__(
+            self,
+            request: cloud_deploy.GetReleaseRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> cloud_deploy.Release:
             r"""Call the get release method over HTTP.
 
             Args:
@@ -1865,37 +2186,40 @@ class CloudDeployRestTransport(CloudDeployTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{name=projects/*/locations/*/deliveryPipelines/*/releases/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=projects/*/locations/*/deliveryPipelines/*/releases/*}",
+                },
             ]
             request, metadata = self._interceptor.pre_get_release(request, metadata)
             pb_request = cloud_deploy.GetReleaseRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1914,19 +2238,24 @@ class CloudDeployRestTransport(CloudDeployTransport):
         def __hash__(self):
             return hash("GetRollout")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_deploy.GetRolloutRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> cloud_deploy.Rollout:
+        def __call__(
+            self,
+            request: cloud_deploy.GetRolloutRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> cloud_deploy.Rollout:
             r"""Call the get rollout method over HTTP.
 
             Args:
@@ -1949,37 +2278,40 @@ class CloudDeployRestTransport(CloudDeployTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{name=projects/*/locations/*/deliveryPipelines/*/releases/*/rollouts/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=projects/*/locations/*/deliveryPipelines/*/releases/*/rollouts/*}",
+                },
             ]
             request, metadata = self._interceptor.pre_get_rollout(request, metadata)
             pb_request = cloud_deploy.GetRolloutRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1998,19 +2330,24 @@ class CloudDeployRestTransport(CloudDeployTransport):
         def __hash__(self):
             return hash("GetTarget")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_deploy.GetTargetRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> cloud_deploy.Target:
+        def __call__(
+            self,
+            request: cloud_deploy.GetTargetRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> cloud_deploy.Target:
             r"""Call the get target method over HTTP.
 
             Args:
@@ -2031,37 +2368,40 @@ class CloudDeployRestTransport(CloudDeployTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{name=projects/*/locations/*/targets/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=projects/*/locations/*/targets/*}",
+                },
             ]
             request, metadata = self._interceptor.pre_get_target(request, metadata)
             pb_request = cloud_deploy.GetTargetRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -2080,19 +2420,24 @@ class CloudDeployRestTransport(CloudDeployTransport):
         def __hash__(self):
             return hash("ListDeliveryPipelines")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_deploy.ListDeliveryPipelinesRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> cloud_deploy.ListDeliveryPipelinesResponse:
+        def __call__(
+            self,
+            request: cloud_deploy.ListDeliveryPipelinesRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> cloud_deploy.ListDeliveryPipelinesResponse:
             r"""Call the list delivery pipelines method over HTTP.
 
             Args:
@@ -2109,37 +2454,42 @@ class CloudDeployRestTransport(CloudDeployTransport):
                     The response object from ``ListDeliveryPipelines``.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{parent=projects/*/locations/*}/deliveryPipelines',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{parent=projects/*/locations/*}/deliveryPipelines",
+                },
             ]
-            request, metadata = self._interceptor.pre_list_delivery_pipelines(request, metadata)
+            request, metadata = self._interceptor.pre_list_delivery_pipelines(
+                request, metadata
+            )
             pb_request = cloud_deploy.ListDeliveryPipelinesRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -2158,19 +2508,24 @@ class CloudDeployRestTransport(CloudDeployTransport):
         def __hash__(self):
             return hash("ListJobRuns")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_deploy.ListJobRunsRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> cloud_deploy.ListJobRunsResponse:
+        def __call__(
+            self,
+            request: cloud_deploy.ListJobRunsRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> cloud_deploy.ListJobRunsResponse:
             r"""Call the list job runs method over HTTP.
 
             Args:
@@ -2191,37 +2546,40 @@ class CloudDeployRestTransport(CloudDeployTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{parent=projects/*/locations/*/deliveryPipelines/*/releases/*/rollouts/*}/jobRuns',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{parent=projects/*/locations/*/deliveryPipelines/*/releases/*/rollouts/*}/jobRuns",
+                },
             ]
             request, metadata = self._interceptor.pre_list_job_runs(request, metadata)
             pb_request = cloud_deploy.ListJobRunsRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -2240,19 +2598,24 @@ class CloudDeployRestTransport(CloudDeployTransport):
         def __hash__(self):
             return hash("ListReleases")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_deploy.ListReleasesRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> cloud_deploy.ListReleasesResponse:
+        def __call__(
+            self,
+            request: cloud_deploy.ListReleasesRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> cloud_deploy.ListReleasesResponse:
             r"""Call the list releases method over HTTP.
 
             Args:
@@ -2269,37 +2632,40 @@ class CloudDeployRestTransport(CloudDeployTransport):
                     The response object from ``ListReleases``.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{parent=projects/*/locations/*/deliveryPipelines/*}/releases',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{parent=projects/*/locations/*/deliveryPipelines/*}/releases",
+                },
             ]
             request, metadata = self._interceptor.pre_list_releases(request, metadata)
             pb_request = cloud_deploy.ListReleasesRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -2318,19 +2684,24 @@ class CloudDeployRestTransport(CloudDeployTransport):
         def __hash__(self):
             return hash("ListRollouts")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_deploy.ListRolloutsRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> cloud_deploy.ListRolloutsResponse:
+        def __call__(
+            self,
+            request: cloud_deploy.ListRolloutsRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> cloud_deploy.ListRolloutsResponse:
             r"""Call the list rollouts method over HTTP.
 
             Args:
@@ -2351,37 +2722,40 @@ class CloudDeployRestTransport(CloudDeployTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{parent=projects/*/locations/*/deliveryPipelines/*/releases/*}/rollouts',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{parent=projects/*/locations/*/deliveryPipelines/*/releases/*}/rollouts",
+                },
             ]
             request, metadata = self._interceptor.pre_list_rollouts(request, metadata)
             pb_request = cloud_deploy.ListRolloutsRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -2400,19 +2774,24 @@ class CloudDeployRestTransport(CloudDeployTransport):
         def __hash__(self):
             return hash("ListTargets")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_deploy.ListTargetsRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> cloud_deploy.ListTargetsResponse:
+        def __call__(
+            self,
+            request: cloud_deploy.ListTargetsRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> cloud_deploy.ListTargetsResponse:
             r"""Call the list targets method over HTTP.
 
             Args:
@@ -2429,37 +2808,40 @@ class CloudDeployRestTransport(CloudDeployTransport):
                     The response object from ``ListTargets``.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{parent=projects/*/locations/*}/targets',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{parent=projects/*/locations/*}/targets",
+                },
             ]
             request, metadata = self._interceptor.pre_list_targets(request, metadata)
             pb_request = cloud_deploy.ListTargetsRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -2478,19 +2860,24 @@ class CloudDeployRestTransport(CloudDeployTransport):
         def __hash__(self):
             return hash("RetryJob")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_deploy.RetryJobRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> cloud_deploy.RetryJobResponse:
+        def __call__(
+            self,
+            request: cloud_deploy.RetryJobRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> cloud_deploy.RetryJobResponse:
             r"""Call the retry job method over HTTP.
 
             Args:
@@ -2509,11 +2896,12 @@ class CloudDeployRestTransport(CloudDeployTransport):
                     The response object from 'RetryJob'.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{rollout=projects/*/locations/*/deliveryPipelines/*/releases/*/rollouts/*}:retryJob',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{rollout=projects/*/locations/*/deliveryPipelines/*/releases/*/rollouts/*}:retryJob",
+                    "body": "*",
+                },
             ]
             request, metadata = self._interceptor.pre_retry_job(request, metadata)
             pb_request = cloud_deploy.RetryJobRequest.pb(request)
@@ -2522,33 +2910,35 @@ class CloudDeployRestTransport(CloudDeployTransport):
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -2567,19 +2957,26 @@ class CloudDeployRestTransport(CloudDeployTransport):
         def __hash__(self):
             return hash("UpdateDeliveryPipeline")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-            "updateMask" : {},        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {
+            "updateMask": {},
+        }
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_deploy.UpdateDeliveryPipelineRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: cloud_deploy.UpdateDeliveryPipelineRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
             r"""Call the update delivery pipeline method over HTTP.
 
             Args:
@@ -2599,46 +2996,51 @@ class CloudDeployRestTransport(CloudDeployTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'patch',
-                'uri': '/v1/{delivery_pipeline.name=projects/*/locations/*/deliveryPipelines/*}',
-                'body': 'delivery_pipeline',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "patch",
+                    "uri": "/v1/{delivery_pipeline.name=projects/*/locations/*/deliveryPipelines/*}",
+                    "body": "delivery_pipeline",
+                },
             ]
-            request, metadata = self._interceptor.pre_update_delivery_pipeline(request, metadata)
+            request, metadata = self._interceptor.pre_update_delivery_pipeline(
+                request, metadata
+            )
             pb_request = cloud_deploy.UpdateDeliveryPipelineRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -2655,19 +3057,26 @@ class CloudDeployRestTransport(CloudDeployTransport):
         def __hash__(self):
             return hash("UpdateTarget")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-            "updateMask" : {},        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {
+            "updateMask": {},
+        }
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_deploy.UpdateTargetRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: cloud_deploy.UpdateTargetRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
             r"""Call the update target method over HTTP.
 
             Args:
@@ -2687,11 +3096,12 @@ class CloudDeployRestTransport(CloudDeployTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'patch',
-                'uri': '/v1/{target.name=projects/*/locations/*/targets/*}',
-                'body': 'target',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "patch",
+                    "uri": "/v1/{target.name=projects/*/locations/*/targets/*}",
+                    "body": "target",
+                },
             ]
             request, metadata = self._interceptor.pre_update_target(request, metadata)
             pb_request = cloud_deploy.UpdateTargetRequest.pb(request)
@@ -2700,33 +3110,35 @@ class CloudDeployRestTransport(CloudDeployTransport):
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -2740,192 +3152,213 @@ class CloudDeployRestTransport(CloudDeployTransport):
             return resp
 
     @property
-    def abandon_release(self) -> Callable[
-            [cloud_deploy.AbandonReleaseRequest],
-            cloud_deploy.AbandonReleaseResponse]:
+    def abandon_release(
+        self,
+    ) -> Callable[
+        [cloud_deploy.AbandonReleaseRequest], cloud_deploy.AbandonReleaseResponse
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._AbandonRelease(self._session, self._host, self._interceptor) # type: ignore
+        return self._AbandonRelease(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def approve_rollout(self) -> Callable[
-            [cloud_deploy.ApproveRolloutRequest],
-            cloud_deploy.ApproveRolloutResponse]:
+    def approve_rollout(
+        self,
+    ) -> Callable[
+        [cloud_deploy.ApproveRolloutRequest], cloud_deploy.ApproveRolloutResponse
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._ApproveRollout(self._session, self._host, self._interceptor) # type: ignore
+        return self._ApproveRollout(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def create_delivery_pipeline(self) -> Callable[
-            [cloud_deploy.CreateDeliveryPipelineRequest],
-            operations_pb2.Operation]:
+    def create_delivery_pipeline(
+        self,
+    ) -> Callable[
+        [cloud_deploy.CreateDeliveryPipelineRequest], operations_pb2.Operation
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._CreateDeliveryPipeline(self._session, self._host, self._interceptor) # type: ignore
+        return self._CreateDeliveryPipeline(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def create_release(self) -> Callable[
-            [cloud_deploy.CreateReleaseRequest],
-            operations_pb2.Operation]:
+    def create_release(
+        self,
+    ) -> Callable[[cloud_deploy.CreateReleaseRequest], operations_pb2.Operation]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._CreateRelease(self._session, self._host, self._interceptor) # type: ignore
+        return self._CreateRelease(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def create_rollout(self) -> Callable[
-            [cloud_deploy.CreateRolloutRequest],
-            operations_pb2.Operation]:
+    def create_rollout(
+        self,
+    ) -> Callable[[cloud_deploy.CreateRolloutRequest], operations_pb2.Operation]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._CreateRollout(self._session, self._host, self._interceptor) # type: ignore
+        return self._CreateRollout(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def create_target(self) -> Callable[
-            [cloud_deploy.CreateTargetRequest],
-            operations_pb2.Operation]:
+    def create_target(
+        self,
+    ) -> Callable[[cloud_deploy.CreateTargetRequest], operations_pb2.Operation]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._CreateTarget(self._session, self._host, self._interceptor) # type: ignore
+        return self._CreateTarget(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def delete_delivery_pipeline(self) -> Callable[
-            [cloud_deploy.DeleteDeliveryPipelineRequest],
-            operations_pb2.Operation]:
+    def delete_delivery_pipeline(
+        self,
+    ) -> Callable[
+        [cloud_deploy.DeleteDeliveryPipelineRequest], operations_pb2.Operation
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._DeleteDeliveryPipeline(self._session, self._host, self._interceptor) # type: ignore
+        return self._DeleteDeliveryPipeline(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def delete_target(self) -> Callable[
-            [cloud_deploy.DeleteTargetRequest],
-            operations_pb2.Operation]:
+    def delete_target(
+        self,
+    ) -> Callable[[cloud_deploy.DeleteTargetRequest], operations_pb2.Operation]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._DeleteTarget(self._session, self._host, self._interceptor) # type: ignore
+        return self._DeleteTarget(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def get_config(self) -> Callable[
-            [cloud_deploy.GetConfigRequest],
-            cloud_deploy.Config]:
+    def get_config(
+        self,
+    ) -> Callable[[cloud_deploy.GetConfigRequest], cloud_deploy.Config]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._GetConfig(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetConfig(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def get_delivery_pipeline(self) -> Callable[
-            [cloud_deploy.GetDeliveryPipelineRequest],
-            cloud_deploy.DeliveryPipeline]:
+    def get_delivery_pipeline(
+        self,
+    ) -> Callable[
+        [cloud_deploy.GetDeliveryPipelineRequest], cloud_deploy.DeliveryPipeline
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._GetDeliveryPipeline(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetDeliveryPipeline(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def get_job_run(self) -> Callable[
-            [cloud_deploy.GetJobRunRequest],
-            cloud_deploy.JobRun]:
+    def get_job_run(
+        self,
+    ) -> Callable[[cloud_deploy.GetJobRunRequest], cloud_deploy.JobRun]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._GetJobRun(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetJobRun(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def get_release(self) -> Callable[
-            [cloud_deploy.GetReleaseRequest],
-            cloud_deploy.Release]:
+    def get_release(
+        self,
+    ) -> Callable[[cloud_deploy.GetReleaseRequest], cloud_deploy.Release]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._GetRelease(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetRelease(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def get_rollout(self) -> Callable[
-            [cloud_deploy.GetRolloutRequest],
-            cloud_deploy.Rollout]:
+    def get_rollout(
+        self,
+    ) -> Callable[[cloud_deploy.GetRolloutRequest], cloud_deploy.Rollout]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._GetRollout(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetRollout(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def get_target(self) -> Callable[
-            [cloud_deploy.GetTargetRequest],
-            cloud_deploy.Target]:
+    def get_target(
+        self,
+    ) -> Callable[[cloud_deploy.GetTargetRequest], cloud_deploy.Target]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._GetTarget(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetTarget(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def list_delivery_pipelines(self) -> Callable[
-            [cloud_deploy.ListDeliveryPipelinesRequest],
-            cloud_deploy.ListDeliveryPipelinesResponse]:
+    def list_delivery_pipelines(
+        self,
+    ) -> Callable[
+        [cloud_deploy.ListDeliveryPipelinesRequest],
+        cloud_deploy.ListDeliveryPipelinesResponse,
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._ListDeliveryPipelines(self._session, self._host, self._interceptor) # type: ignore
+        return self._ListDeliveryPipelines(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def list_job_runs(self) -> Callable[
-            [cloud_deploy.ListJobRunsRequest],
-            cloud_deploy.ListJobRunsResponse]:
+    def list_job_runs(
+        self,
+    ) -> Callable[[cloud_deploy.ListJobRunsRequest], cloud_deploy.ListJobRunsResponse]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._ListJobRuns(self._session, self._host, self._interceptor) # type: ignore
+        return self._ListJobRuns(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def list_releases(self) -> Callable[
-            [cloud_deploy.ListReleasesRequest],
-            cloud_deploy.ListReleasesResponse]:
+    def list_releases(
+        self,
+    ) -> Callable[
+        [cloud_deploy.ListReleasesRequest], cloud_deploy.ListReleasesResponse
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._ListReleases(self._session, self._host, self._interceptor) # type: ignore
+        return self._ListReleases(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def list_rollouts(self) -> Callable[
-            [cloud_deploy.ListRolloutsRequest],
-            cloud_deploy.ListRolloutsResponse]:
+    def list_rollouts(
+        self,
+    ) -> Callable[
+        [cloud_deploy.ListRolloutsRequest], cloud_deploy.ListRolloutsResponse
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._ListRollouts(self._session, self._host, self._interceptor) # type: ignore
+        return self._ListRollouts(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def list_targets(self) -> Callable[
-            [cloud_deploy.ListTargetsRequest],
-            cloud_deploy.ListTargetsResponse]:
+    def list_targets(
+        self,
+    ) -> Callable[[cloud_deploy.ListTargetsRequest], cloud_deploy.ListTargetsResponse]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._ListTargets(self._session, self._host, self._interceptor) # type: ignore
+        return self._ListTargets(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def retry_job(self) -> Callable[
-            [cloud_deploy.RetryJobRequest],
-            cloud_deploy.RetryJobResponse]:
+    def retry_job(
+        self,
+    ) -> Callable[[cloud_deploy.RetryJobRequest], cloud_deploy.RetryJobResponse]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._RetryJob(self._session, self._host, self._interceptor) # type: ignore
+        return self._RetryJob(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def update_delivery_pipeline(self) -> Callable[
-            [cloud_deploy.UpdateDeliveryPipelineRequest],
-            operations_pb2.Operation]:
+    def update_delivery_pipeline(
+        self,
+    ) -> Callable[
+        [cloud_deploy.UpdateDeliveryPipelineRequest], operations_pb2.Operation
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._UpdateDeliveryPipeline(self._session, self._host, self._interceptor) # type: ignore
+        return self._UpdateDeliveryPipeline(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def update_target(self) -> Callable[
-            [cloud_deploy.UpdateTargetRequest],
-            operations_pb2.Operation]:
+    def update_target(
+        self,
+    ) -> Callable[[cloud_deploy.UpdateTargetRequest], operations_pb2.Operation]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._UpdateTarget(self._session, self._host, self._interceptor) # type: ignore
+        return self._UpdateTarget(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
     def get_location(self):
-        return self._GetLocation(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetLocation(self._session, self._host, self._interceptor)  # type: ignore
 
     class _GetLocation(CloudDeployRestStub):
-        def __call__(self,
-            request: locations_pb2.GetLocationRequest, *,
-            retry: OptionalRetry=gapic_v1.method.DEFAULT,
-            timeout: Optional[float]=None,
-            metadata: Sequence[Tuple[str, str]]=(),
-            ) -> locations_pb2.Location:
+        def __call__(
+            self,
+            request: locations_pb2.GetLocationRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> locations_pb2.Location:
 
             r"""Call the get location method over HTTP.
 
@@ -2942,26 +3375,26 @@ class CloudDeployRestTransport(CloudDeployTransport):
                 locations_pb2.Location: Response from GetLocation method.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{name=projects/*/locations/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=projects/*/locations/*}",
+                },
             ]
 
             request, metadata = self._interceptor.pre_get_location(request, metadata)
             request_kwargs = json_format.MessageToDict(request)
-            transcoded_request = path_template.transcode(
-                http_options, **request_kwargs)
+            transcoded_request = path_template.transcode(http_options, **request_kwargs)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json.dumps(transcoded_request['query_params']))
+            query_params = json.loads(json.dumps(transcoded_request["query_params"]))
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
 
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
@@ -2982,15 +3415,17 @@ class CloudDeployRestTransport(CloudDeployTransport):
 
     @property
     def list_locations(self):
-        return self._ListLocations(self._session, self._host, self._interceptor) # type: ignore
+        return self._ListLocations(self._session, self._host, self._interceptor)  # type: ignore
 
     class _ListLocations(CloudDeployRestStub):
-        def __call__(self,
-            request: locations_pb2.ListLocationsRequest, *,
-            retry: OptionalRetry=gapic_v1.method.DEFAULT,
-            timeout: Optional[float]=None,
-            metadata: Sequence[Tuple[str, str]]=(),
-            ) -> locations_pb2.ListLocationsResponse:
+        def __call__(
+            self,
+            request: locations_pb2.ListLocationsRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> locations_pb2.ListLocationsResponse:
 
             r"""Call the list locations method over HTTP.
 
@@ -3007,26 +3442,26 @@ class CloudDeployRestTransport(CloudDeployTransport):
                 locations_pb2.ListLocationsResponse: Response from ListLocations method.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{name=projects/*}/locations',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=projects/*}/locations",
+                },
             ]
 
             request, metadata = self._interceptor.pre_list_locations(request, metadata)
             request_kwargs = json_format.MessageToDict(request)
-            transcoded_request = path_template.transcode(
-                http_options, **request_kwargs)
+            transcoded_request = path_template.transcode(http_options, **request_kwargs)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json.dumps(transcoded_request['query_params']))
+            query_params = json.loads(json.dumps(transcoded_request["query_params"]))
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
 
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
@@ -3047,15 +3482,17 @@ class CloudDeployRestTransport(CloudDeployTransport):
 
     @property
     def get_iam_policy(self):
-        return self._GetIamPolicy(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetIamPolicy(self._session, self._host, self._interceptor)  # type: ignore
 
     class _GetIamPolicy(CloudDeployRestStub):
-        def __call__(self,
-            request: iam_policy_pb2.GetIamPolicyRequest, *,
-            retry: OptionalRetry=gapic_v1.method.DEFAULT,
-            timeout: Optional[float]=None,
-            metadata: Sequence[Tuple[str, str]]=(),
-            ) -> policy_pb2.Policy:
+        def __call__(
+            self,
+            request: iam_policy_pb2.GetIamPolicyRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> policy_pb2.Policy:
 
             r"""Call the get iam policy method over HTTP.
 
@@ -3072,30 +3509,30 @@ class CloudDeployRestTransport(CloudDeployTransport):
                 policy_pb2.Policy: Response from GetIamPolicy method.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{resource=projects/*/locations/*/deliveryPipelines/*}:getIamPolicy',
-            },
-{
-                'method': 'get',
-                'uri': '/v1/{resource=projects/*/locations/*/targets/*}:getIamPolicy',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{resource=projects/*/locations/*/deliveryPipelines/*}:getIamPolicy",
+                },
+                {
+                    "method": "get",
+                    "uri": "/v1/{resource=projects/*/locations/*/targets/*}:getIamPolicy",
+                },
             ]
 
             request, metadata = self._interceptor.pre_get_iam_policy(request, metadata)
             request_kwargs = json_format.MessageToDict(request)
-            transcoded_request = path_template.transcode(
-                http_options, **request_kwargs)
+            transcoded_request = path_template.transcode(http_options, **request_kwargs)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json.dumps(transcoded_request['query_params']))
+            query_params = json.loads(json.dumps(transcoded_request["query_params"]))
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
 
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
@@ -3116,15 +3553,17 @@ class CloudDeployRestTransport(CloudDeployTransport):
 
     @property
     def set_iam_policy(self):
-        return self._SetIamPolicy(self._session, self._host, self._interceptor) # type: ignore
+        return self._SetIamPolicy(self._session, self._host, self._interceptor)  # type: ignore
 
     class _SetIamPolicy(CloudDeployRestStub):
-        def __call__(self,
-            request: iam_policy_pb2.SetIamPolicyRequest, *,
-            retry: OptionalRetry=gapic_v1.method.DEFAULT,
-            timeout: Optional[float]=None,
-            metadata: Sequence[Tuple[str, str]]=(),
-            ) -> policy_pb2.Policy:
+        def __call__(
+            self,
+            request: iam_policy_pb2.SetIamPolicyRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> policy_pb2.Policy:
 
             r"""Call the set iam policy method over HTTP.
 
@@ -3141,33 +3580,33 @@ class CloudDeployRestTransport(CloudDeployTransport):
                 policy_pb2.Policy: Response from SetIamPolicy method.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{resource=projects/*/locations/*/deliveryPipelines/*}:setIamPolicy',
-                'body': '*',
-            },
-{
-                'method': 'post',
-                'uri': '/v1/{resource=projects/*/locations/*/targets/*}:setIamPolicy',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{resource=projects/*/locations/*/deliveryPipelines/*}:setIamPolicy",
+                    "body": "*",
+                },
+                {
+                    "method": "post",
+                    "uri": "/v1/{resource=projects/*/locations/*/targets/*}:setIamPolicy",
+                    "body": "*",
+                },
             ]
 
             request, metadata = self._interceptor.pre_set_iam_policy(request, metadata)
             request_kwargs = json_format.MessageToDict(request)
-            transcoded_request = path_template.transcode(
-                http_options, **request_kwargs)
+            transcoded_request = path_template.transcode(http_options, **request_kwargs)
 
-            body = json.loads(json.dumps(transcoded_request['body']))
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            body = json.loads(json.dumps(transcoded_request["body"]))
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json.dumps(transcoded_request['query_params']))
+            query_params = json.loads(json.dumps(transcoded_request["query_params"]))
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
 
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
@@ -3189,15 +3628,17 @@ class CloudDeployRestTransport(CloudDeployTransport):
 
     @property
     def test_iam_permissions(self):
-        return self._TestIamPermissions(self._session, self._host, self._interceptor) # type: ignore
+        return self._TestIamPermissions(self._session, self._host, self._interceptor)  # type: ignore
 
     class _TestIamPermissions(CloudDeployRestStub):
-        def __call__(self,
-            request: iam_policy_pb2.TestIamPermissionsRequest, *,
-            retry: OptionalRetry=gapic_v1.method.DEFAULT,
-            timeout: Optional[float]=None,
-            metadata: Sequence[Tuple[str, str]]=(),
-            ) -> iam_policy_pb2.TestIamPermissionsResponse:
+        def __call__(
+            self,
+            request: iam_policy_pb2.TestIamPermissionsRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> iam_policy_pb2.TestIamPermissionsResponse:
 
             r"""Call the test iam permissions method over HTTP.
 
@@ -3214,33 +3655,35 @@ class CloudDeployRestTransport(CloudDeployTransport):
                 iam_policy_pb2.TestIamPermissionsResponse: Response from TestIamPermissions method.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{resource=projects/*/locations/*/deliveryPipelines/*}:testIamPermissions',
-                'body': '*',
-            },
-{
-                'method': 'post',
-                'uri': '/v1/{resource=projects/*/locations/*/targets/*}:testIamPermissions',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{resource=projects/*/locations/*/deliveryPipelines/*}:testIamPermissions",
+                    "body": "*",
+                },
+                {
+                    "method": "post",
+                    "uri": "/v1/{resource=projects/*/locations/*/targets/*}:testIamPermissions",
+                    "body": "*",
+                },
             ]
 
-            request, metadata = self._interceptor.pre_test_iam_permissions(request, metadata)
+            request, metadata = self._interceptor.pre_test_iam_permissions(
+                request, metadata
+            )
             request_kwargs = json_format.MessageToDict(request)
-            transcoded_request = path_template.transcode(
-                http_options, **request_kwargs)
+            transcoded_request = path_template.transcode(http_options, **request_kwargs)
 
-            body = json.loads(json.dumps(transcoded_request['body']))
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            body = json.loads(json.dumps(transcoded_request["body"]))
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json.dumps(transcoded_request['query_params']))
+            query_params = json.loads(json.dumps(transcoded_request["query_params"]))
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
 
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
@@ -3262,15 +3705,17 @@ class CloudDeployRestTransport(CloudDeployTransport):
 
     @property
     def cancel_operation(self):
-        return self._CancelOperation(self._session, self._host, self._interceptor) # type: ignore
+        return self._CancelOperation(self._session, self._host, self._interceptor)  # type: ignore
 
     class _CancelOperation(CloudDeployRestStub):
-        def __call__(self,
-            request: operations_pb2.CancelOperationRequest, *,
-            retry: OptionalRetry=gapic_v1.method.DEFAULT,
-            timeout: Optional[float]=None,
-            metadata: Sequence[Tuple[str, str]]=(),
-            ) -> None:
+        def __call__(
+            self,
+            request: operations_pb2.CancelOperationRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> None:
 
             r"""Call the cancel operation method over HTTP.
 
@@ -3284,28 +3729,30 @@ class CloudDeployRestTransport(CloudDeployTransport):
                     sent along with the request as metadata.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{name=projects/*/locations/*/operations/*}:cancel',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{name=projects/*/locations/*/operations/*}:cancel",
+                    "body": "*",
+                },
             ]
 
-            request, metadata = self._interceptor.pre_cancel_operation(request, metadata)
+            request, metadata = self._interceptor.pre_cancel_operation(
+                request, metadata
+            )
             request_kwargs = json_format.MessageToDict(request)
-            transcoded_request = path_template.transcode(
-                http_options, **request_kwargs)
+            transcoded_request = path_template.transcode(http_options, **request_kwargs)
 
-            body = json.loads(json.dumps(transcoded_request['body']))
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            body = json.loads(json.dumps(transcoded_request["body"]))
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json.dumps(transcoded_request['query_params']))
+            query_params = json.loads(json.dumps(transcoded_request["query_params"]))
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
 
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
@@ -3324,15 +3771,17 @@ class CloudDeployRestTransport(CloudDeployTransport):
 
     @property
     def delete_operation(self):
-        return self._DeleteOperation(self._session, self._host, self._interceptor) # type: ignore
+        return self._DeleteOperation(self._session, self._host, self._interceptor)  # type: ignore
 
     class _DeleteOperation(CloudDeployRestStub):
-        def __call__(self,
-            request: operations_pb2.DeleteOperationRequest, *,
-            retry: OptionalRetry=gapic_v1.method.DEFAULT,
-            timeout: Optional[float]=None,
-            metadata: Sequence[Tuple[str, str]]=(),
-            ) -> None:
+        def __call__(
+            self,
+            request: operations_pb2.DeleteOperationRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> None:
 
             r"""Call the delete operation method over HTTP.
 
@@ -3346,26 +3795,28 @@ class CloudDeployRestTransport(CloudDeployTransport):
                     sent along with the request as metadata.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'delete',
-                'uri': '/v1/{name=projects/*/locations/*/operations/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "delete",
+                    "uri": "/v1/{name=projects/*/locations/*/operations/*}",
+                },
             ]
 
-            request, metadata = self._interceptor.pre_delete_operation(request, metadata)
+            request, metadata = self._interceptor.pre_delete_operation(
+                request, metadata
+            )
             request_kwargs = json_format.MessageToDict(request)
-            transcoded_request = path_template.transcode(
-                http_options, **request_kwargs)
+            transcoded_request = path_template.transcode(http_options, **request_kwargs)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json.dumps(transcoded_request['query_params']))
+            query_params = json.loads(json.dumps(transcoded_request["query_params"]))
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
 
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
@@ -3383,15 +3834,17 @@ class CloudDeployRestTransport(CloudDeployTransport):
 
     @property
     def get_operation(self):
-        return self._GetOperation(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetOperation(self._session, self._host, self._interceptor)  # type: ignore
 
     class _GetOperation(CloudDeployRestStub):
-        def __call__(self,
-            request: operations_pb2.GetOperationRequest, *,
-            retry: OptionalRetry=gapic_v1.method.DEFAULT,
-            timeout: Optional[float]=None,
-            metadata: Sequence[Tuple[str, str]]=(),
-            ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: operations_pb2.GetOperationRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
 
             r"""Call the get operation method over HTTP.
 
@@ -3408,26 +3861,26 @@ class CloudDeployRestTransport(CloudDeployTransport):
                 operations_pb2.Operation: Response from GetOperation method.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{name=projects/*/locations/*/operations/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=projects/*/locations/*/operations/*}",
+                },
             ]
 
             request, metadata = self._interceptor.pre_get_operation(request, metadata)
             request_kwargs = json_format.MessageToDict(request)
-            transcoded_request = path_template.transcode(
-                http_options, **request_kwargs)
+            transcoded_request = path_template.transcode(http_options, **request_kwargs)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json.dumps(transcoded_request['query_params']))
+            query_params = json.loads(json.dumps(transcoded_request["query_params"]))
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
 
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
@@ -3448,15 +3901,17 @@ class CloudDeployRestTransport(CloudDeployTransport):
 
     @property
     def list_operations(self):
-        return self._ListOperations(self._session, self._host, self._interceptor) # type: ignore
+        return self._ListOperations(self._session, self._host, self._interceptor)  # type: ignore
 
     class _ListOperations(CloudDeployRestStub):
-        def __call__(self,
-            request: operations_pb2.ListOperationsRequest, *,
-            retry: OptionalRetry=gapic_v1.method.DEFAULT,
-            timeout: Optional[float]=None,
-            metadata: Sequence[Tuple[str, str]]=(),
-            ) -> operations_pb2.ListOperationsResponse:
+        def __call__(
+            self,
+            request: operations_pb2.ListOperationsRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.ListOperationsResponse:
 
             r"""Call the list operations method over HTTP.
 
@@ -3473,26 +3928,26 @@ class CloudDeployRestTransport(CloudDeployTransport):
                 operations_pb2.ListOperationsResponse: Response from ListOperations method.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{name=projects/*/locations/*}/operations',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=projects/*/locations/*}/operations",
+                },
             ]
 
             request, metadata = self._interceptor.pre_list_operations(request, metadata)
             request_kwargs = json_format.MessageToDict(request)
-            transcoded_request = path_template.transcode(
-                http_options, **request_kwargs)
+            transcoded_request = path_template.transcode(http_options, **request_kwargs)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json.dumps(transcoded_request['query_params']))
+            query_params = json.loads(json.dumps(transcoded_request["query_params"]))
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
 
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
@@ -3519,6 +3974,4 @@ class CloudDeployRestTransport(CloudDeployTransport):
         self._session.close()
 
 
-__all__=(
-    'CloudDeployRestTransport',
-)
+__all__ = ("CloudDeployRestTransport",)
