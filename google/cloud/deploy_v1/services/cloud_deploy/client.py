@@ -376,6 +376,28 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
         return m.groupdict() if m else {}
 
     @staticmethod
+    def service_path(
+        project: str,
+        location: str,
+        service: str,
+    ) -> str:
+        """Returns a fully-qualified service string."""
+        return "projects/{project}/locations/{location}/services/{service}".format(
+            project=project,
+            location=location,
+            service=service,
+        )
+
+    @staticmethod
+    def parse_service_path(path: str) -> Dict[str, str]:
+        """Parses a service path into its component segments."""
+        m = re.match(
+            r"^projects/(?P<project>.+?)/locations/(?P<location>.+?)/services/(?P<service>.+?)$",
+            path,
+        )
+        return m.groupdict() if m else {}
+
+    @staticmethod
     def target_path(
         project: str,
         location: str,
@@ -2470,6 +2492,219 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
         # Done; return the response.
         return response
 
+    def advance_rollout(
+        self,
+        request: Optional[Union[cloud_deploy.AdvanceRolloutRequest, dict]] = None,
+        *,
+        name: Optional[str] = None,
+        phase_id: Optional[str] = None,
+        retry: OptionalRetry = gapic_v1.method.DEFAULT,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
+        metadata: Sequence[Tuple[str, str]] = (),
+    ) -> cloud_deploy.AdvanceRolloutResponse:
+        r"""Advances a Rollout in a given project and location.
+
+        .. code-block:: python
+
+            # This snippet has been automatically generated and should be regarded as a
+            # code template only.
+            # It will require modifications to work:
+            # - It may require correct/in-range values for request initialization.
+            # - It may require specifying regional endpoints when creating the service
+            #   client as shown in:
+            #   https://googleapis.dev/python/google-api-core/latest/client_options.html
+            from google.cloud import deploy_v1
+
+            def sample_advance_rollout():
+                # Create a client
+                client = deploy_v1.CloudDeployClient()
+
+                # Initialize request argument(s)
+                request = deploy_v1.AdvanceRolloutRequest(
+                    name="name_value",
+                    phase_id="phase_id_value",
+                )
+
+                # Make the request
+                response = client.advance_rollout(request=request)
+
+                # Handle the response
+                print(response)
+
+        Args:
+            request (Union[google.cloud.deploy_v1.types.AdvanceRolloutRequest, dict]):
+                The request object. The request object used by
+                `AdvanceRollout`.
+            name (str):
+                Required. Name of the Rollout. Format
+                is
+                projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
+                releases/{release}/rollouts/{rollout}.
+
+                This corresponds to the ``name`` field
+                on the ``request`` instance; if ``request`` is provided, this
+                should not be set.
+            phase_id (str):
+                Required. The phase ID to advance the ``Rollout`` to.
+                This corresponds to the ``phase_id`` field
+                on the ``request`` instance; if ``request`` is provided, this
+                should not be set.
+            retry (google.api_core.retry.Retry): Designation of what errors, if any,
+                should be retried.
+            timeout (float): The timeout for this request.
+            metadata (Sequence[Tuple[str, str]]): Strings which should be
+                sent along with the request as metadata.
+
+        Returns:
+            google.cloud.deploy_v1.types.AdvanceRolloutResponse:
+                The response object from AdvanceRollout.
+        """
+        # Create or coerce a protobuf request object.
+        # Quick check: If we got a request object, we should *not* have
+        # gotten any keyword arguments that map to the request.
+        has_flattened_params = any([name, phase_id])
+        if request is not None and has_flattened_params:
+            raise ValueError(
+                "If the `request` argument is set, then none of "
+                "the individual field arguments should be set."
+            )
+
+        # Minor optimization to avoid making a copy if the user passes
+        # in a cloud_deploy.AdvanceRolloutRequest.
+        # There's no risk of modifying the input as we've already verified
+        # there are no flattened fields.
+        if not isinstance(request, cloud_deploy.AdvanceRolloutRequest):
+            request = cloud_deploy.AdvanceRolloutRequest(request)
+            # If we have keyword arguments corresponding to fields on the
+            # request, apply these.
+            if name is not None:
+                request.name = name
+            if phase_id is not None:
+                request.phase_id = phase_id
+
+        # Wrap the RPC method; this adds retry and timeout information,
+        # and friendly error handling.
+        rpc = self._transport._wrapped_methods[self._transport.advance_rollout]
+
+        # Certain fields should be provided within the metadata header;
+        # add these here.
+        metadata = tuple(metadata) + (
+            gapic_v1.routing_header.to_grpc_metadata((("name", request.name),)),
+        )
+
+        # Send the request.
+        response = rpc(
+            request,
+            retry=retry,
+            timeout=timeout,
+            metadata=metadata,
+        )
+
+        # Done; return the response.
+        return response
+
+    def cancel_rollout(
+        self,
+        request: Optional[Union[cloud_deploy.CancelRolloutRequest, dict]] = None,
+        *,
+        name: Optional[str] = None,
+        retry: OptionalRetry = gapic_v1.method.DEFAULT,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
+        metadata: Sequence[Tuple[str, str]] = (),
+    ) -> cloud_deploy.CancelRolloutResponse:
+        r"""Cancels a Rollout in a given project and location.
+
+        .. code-block:: python
+
+            # This snippet has been automatically generated and should be regarded as a
+            # code template only.
+            # It will require modifications to work:
+            # - It may require correct/in-range values for request initialization.
+            # - It may require specifying regional endpoints when creating the service
+            #   client as shown in:
+            #   https://googleapis.dev/python/google-api-core/latest/client_options.html
+            from google.cloud import deploy_v1
+
+            def sample_cancel_rollout():
+                # Create a client
+                client = deploy_v1.CloudDeployClient()
+
+                # Initialize request argument(s)
+                request = deploy_v1.CancelRolloutRequest(
+                    name="name_value",
+                )
+
+                # Make the request
+                response = client.cancel_rollout(request=request)
+
+                # Handle the response
+                print(response)
+
+        Args:
+            request (Union[google.cloud.deploy_v1.types.CancelRolloutRequest, dict]):
+                The request object. The request object used by
+                `CancelRollout`.
+            name (str):
+                Required. Name of the Rollout. Format
+                is
+                projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
+                releases/{release}/rollouts/{rollout}.
+
+                This corresponds to the ``name`` field
+                on the ``request`` instance; if ``request`` is provided, this
+                should not be set.
+            retry (google.api_core.retry.Retry): Designation of what errors, if any,
+                should be retried.
+            timeout (float): The timeout for this request.
+            metadata (Sequence[Tuple[str, str]]): Strings which should be
+                sent along with the request as metadata.
+
+        Returns:
+            google.cloud.deploy_v1.types.CancelRolloutResponse:
+                The response object from CancelRollout.
+        """
+        # Create or coerce a protobuf request object.
+        # Quick check: If we got a request object, we should *not* have
+        # gotten any keyword arguments that map to the request.
+        has_flattened_params = any([name])
+        if request is not None and has_flattened_params:
+            raise ValueError(
+                "If the `request` argument is set, then none of "
+                "the individual field arguments should be set."
+            )
+
+        # Minor optimization to avoid making a copy if the user passes
+        # in a cloud_deploy.CancelRolloutRequest.
+        # There's no risk of modifying the input as we've already verified
+        # there are no flattened fields.
+        if not isinstance(request, cloud_deploy.CancelRolloutRequest):
+            request = cloud_deploy.CancelRolloutRequest(request)
+            # If we have keyword arguments corresponding to fields on the
+            # request, apply these.
+            if name is not None:
+                request.name = name
+
+        # Wrap the RPC method; this adds retry and timeout information,
+        # and friendly error handling.
+        rpc = self._transport._wrapped_methods[self._transport.cancel_rollout]
+
+        # Certain fields should be provided within the metadata header;
+        # add these here.
+        metadata = tuple(metadata) + (
+            gapic_v1.routing_header.to_grpc_metadata((("name", request.name),)),
+        )
+
+        # Send the request.
+        response = rpc(
+            request,
+            retry=retry,
+            timeout=timeout,
+            metadata=metadata,
+        )
+
+        # Done; return the response.
+        return response
+
     def list_rollouts(
         self,
         request: Optional[Union[cloud_deploy.ListRolloutsRequest, dict]] = None,
@@ -2832,6 +3067,130 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
         # Done; return the response.
         return response
 
+    def ignore_job(
+        self,
+        request: Optional[Union[cloud_deploy.IgnoreJobRequest, dict]] = None,
+        *,
+        rollout: Optional[str] = None,
+        phase_id: Optional[str] = None,
+        job_id: Optional[str] = None,
+        retry: OptionalRetry = gapic_v1.method.DEFAULT,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
+        metadata: Sequence[Tuple[str, str]] = (),
+    ) -> cloud_deploy.IgnoreJobResponse:
+        r"""Ignores the specified Job in a Rollout.
+
+        .. code-block:: python
+
+            # This snippet has been automatically generated and should be regarded as a
+            # code template only.
+            # It will require modifications to work:
+            # - It may require correct/in-range values for request initialization.
+            # - It may require specifying regional endpoints when creating the service
+            #   client as shown in:
+            #   https://googleapis.dev/python/google-api-core/latest/client_options.html
+            from google.cloud import deploy_v1
+
+            def sample_ignore_job():
+                # Create a client
+                client = deploy_v1.CloudDeployClient()
+
+                # Initialize request argument(s)
+                request = deploy_v1.IgnoreJobRequest(
+                    rollout="rollout_value",
+                    phase_id="phase_id_value",
+                    job_id="job_id_value",
+                )
+
+                # Make the request
+                response = client.ignore_job(request=request)
+
+                # Handle the response
+                print(response)
+
+        Args:
+            request (Union[google.cloud.deploy_v1.types.IgnoreJobRequest, dict]):
+                The request object. The request object used by
+                `IgnoreJob`.
+            rollout (str):
+                Required. Name of the Rollout. Format
+                is
+                projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
+                releases/{release}/rollouts/{rollout}.
+
+                This corresponds to the ``rollout`` field
+                on the ``request`` instance; if ``request`` is provided, this
+                should not be set.
+            phase_id (str):
+                Required. The phase ID the Job to
+                ignore belongs to.
+
+                This corresponds to the ``phase_id`` field
+                on the ``request`` instance; if ``request`` is provided, this
+                should not be set.
+            job_id (str):
+                Required. The job ID for the Job to
+                ignore.
+
+                This corresponds to the ``job_id`` field
+                on the ``request`` instance; if ``request`` is provided, this
+                should not be set.
+            retry (google.api_core.retry.Retry): Designation of what errors, if any,
+                should be retried.
+            timeout (float): The timeout for this request.
+            metadata (Sequence[Tuple[str, str]]): Strings which should be
+                sent along with the request as metadata.
+
+        Returns:
+            google.cloud.deploy_v1.types.IgnoreJobResponse:
+                The response object from IgnoreJob.
+        """
+        # Create or coerce a protobuf request object.
+        # Quick check: If we got a request object, we should *not* have
+        # gotten any keyword arguments that map to the request.
+        has_flattened_params = any([rollout, phase_id, job_id])
+        if request is not None and has_flattened_params:
+            raise ValueError(
+                "If the `request` argument is set, then none of "
+                "the individual field arguments should be set."
+            )
+
+        # Minor optimization to avoid making a copy if the user passes
+        # in a cloud_deploy.IgnoreJobRequest.
+        # There's no risk of modifying the input as we've already verified
+        # there are no flattened fields.
+        if not isinstance(request, cloud_deploy.IgnoreJobRequest):
+            request = cloud_deploy.IgnoreJobRequest(request)
+            # If we have keyword arguments corresponding to fields on the
+            # request, apply these.
+            if rollout is not None:
+                request.rollout = rollout
+            if phase_id is not None:
+                request.phase_id = phase_id
+            if job_id is not None:
+                request.job_id = job_id
+
+        # Wrap the RPC method; this adds retry and timeout information,
+        # and friendly error handling.
+        rpc = self._transport._wrapped_methods[self._transport.ignore_job]
+
+        # Certain fields should be provided within the metadata header;
+        # add these here.
+        metadata = tuple(metadata) + (
+            gapic_v1.routing_header.to_grpc_metadata((("rollout", request.rollout),)),
+        )
+
+        # Send the request.
+        response = rpc(
+            request,
+            retry=retry,
+            timeout=timeout,
+            metadata=metadata,
+        )
+
+        # Done; return the response.
+        return response
+
     def retry_job(
         self,
         request: Optional[Union[cloud_deploy.RetryJobRequest, dict]] = None,
@@ -3157,6 +3516,107 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
         rpc = self._transport._wrapped_methods[self._transport.get_job_run]
+
+        # Certain fields should be provided within the metadata header;
+        # add these here.
+        metadata = tuple(metadata) + (
+            gapic_v1.routing_header.to_grpc_metadata((("name", request.name),)),
+        )
+
+        # Send the request.
+        response = rpc(
+            request,
+            retry=retry,
+            timeout=timeout,
+            metadata=metadata,
+        )
+
+        # Done; return the response.
+        return response
+
+    def terminate_job_run(
+        self,
+        request: Optional[Union[cloud_deploy.TerminateJobRunRequest, dict]] = None,
+        *,
+        name: Optional[str] = None,
+        retry: OptionalRetry = gapic_v1.method.DEFAULT,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
+        metadata: Sequence[Tuple[str, str]] = (),
+    ) -> cloud_deploy.TerminateJobRunResponse:
+        r"""Terminates a Job Run in a given project and location.
+
+        .. code-block:: python
+
+            # This snippet has been automatically generated and should be regarded as a
+            # code template only.
+            # It will require modifications to work:
+            # - It may require correct/in-range values for request initialization.
+            # - It may require specifying regional endpoints when creating the service
+            #   client as shown in:
+            #   https://googleapis.dev/python/google-api-core/latest/client_options.html
+            from google.cloud import deploy_v1
+
+            def sample_terminate_job_run():
+                # Create a client
+                client = deploy_v1.CloudDeployClient()
+
+                # Initialize request argument(s)
+                request = deploy_v1.TerminateJobRunRequest(
+                    name="name_value",
+                )
+
+                # Make the request
+                response = client.terminate_job_run(request=request)
+
+                # Handle the response
+                print(response)
+
+        Args:
+            request (Union[google.cloud.deploy_v1.types.TerminateJobRunRequest, dict]):
+                The request object. The request object used by
+                `TerminateJobRun`.
+            name (str):
+                Required. Name of the ``JobRun``. Format must be
+                projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
+                releases/{release}/rollouts/{rollout}/jobRuns/{jobRun}.
+
+                This corresponds to the ``name`` field
+                on the ``request`` instance; if ``request`` is provided, this
+                should not be set.
+            retry (google.api_core.retry.Retry): Designation of what errors, if any,
+                should be retried.
+            timeout (float): The timeout for this request.
+            metadata (Sequence[Tuple[str, str]]): Strings which should be
+                sent along with the request as metadata.
+
+        Returns:
+            google.cloud.deploy_v1.types.TerminateJobRunResponse:
+                The response object from TerminateJobRun.
+        """
+        # Create or coerce a protobuf request object.
+        # Quick check: If we got a request object, we should *not* have
+        # gotten any keyword arguments that map to the request.
+        has_flattened_params = any([name])
+        if request is not None and has_flattened_params:
+            raise ValueError(
+                "If the `request` argument is set, then none of "
+                "the individual field arguments should be set."
+            )
+
+        # Minor optimization to avoid making a copy if the user passes
+        # in a cloud_deploy.TerminateJobRunRequest.
+        # There's no risk of modifying the input as we've already verified
+        # there are no flattened fields.
+        if not isinstance(request, cloud_deploy.TerminateJobRunRequest):
+            request = cloud_deploy.TerminateJobRunRequest(request)
+            # If we have keyword arguments corresponding to fields on the
+            # request, apply these.
+            if name is not None:
+                request.name = name
+
+        # Wrap the RPC method; this adds retry and timeout information,
+        # and friendly error handling.
+        rpc = self._transport._wrapped_methods[self._transport.terminate_job_run]
 
         # Certain fields should be provided within the metadata header;
         # add these here.
