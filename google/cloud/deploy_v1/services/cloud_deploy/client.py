@@ -730,8 +730,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         Args:
             request (Union[google.cloud.deploy_v1.types.ListDeliveryPipelinesRequest, dict]):
-                The request object. The request object for
-                `ListDeliveryPipelines`.
+                The request object. The request object for ``ListDeliveryPipelines``.
             parent (str):
                 Required. The parent, which owns this collection of
                 pipelines. Format must be
@@ -844,8 +843,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         Args:
             request (Union[google.cloud.deploy_v1.types.GetDeliveryPipelineRequest, dict]):
-                The request object. The request object for
-                `GetDeliveryPipeline`
+                The request object. The request object for ``GetDeliveryPipeline``
             name (str):
                 Required. Name of the ``DeliveryPipeline``. Format must
                 be
@@ -960,8 +958,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         Args:
             request (Union[google.cloud.deploy_v1.types.CreateDeliveryPipelineRequest, dict]):
-                The request object. The request object for
-                `CreateDeliveryPipeline`.
+                The request object. The request object for ``CreateDeliveryPipeline``.
             parent (str):
                 Required. The parent collection in which the
                 ``DeliveryPipeline`` should be created. Format should be
@@ -1098,8 +1095,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         Args:
             request (Union[google.cloud.deploy_v1.types.UpdateDeliveryPipelineRequest, dict]):
-                The request object. The request object for
-                `UpdateDeliveryPipeline`.
+                The request object. The request object for ``UpdateDeliveryPipeline``.
             delivery_pipeline (google.cloud.deploy_v1.types.DeliveryPipeline):
                 Required. The ``DeliveryPipeline`` to update.
                 This corresponds to the ``delivery_pipeline`` field
@@ -1235,8 +1231,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         Args:
             request (Union[google.cloud.deploy_v1.types.DeleteDeliveryPipelineRequest, dict]):
-                The request object. The request object for
-                `DeleteDeliveryPipeline`.
+                The request object. The request object for ``DeleteDeliveryPipeline``.
             name (str):
                 Required. The name of the ``DeliveryPipeline`` to
                 delete. Format should be
@@ -1357,8 +1352,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         Args:
             request (Union[google.cloud.deploy_v1.types.ListTargetsRequest, dict]):
-                The request object. The request object for
-                `ListTargets`.
+                The request object. The request object for ``ListTargets``.
             parent (str):
                 Required. The parent, which owns this collection of
                 targets. Format must be
@@ -1471,7 +1465,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         Args:
             request (Union[google.cloud.deploy_v1.types.GetTargetRequest, dict]):
-                The request object. The request object for `GetTarget`.
+                The request object. The request object for ``GetTarget``.
             name (str):
                 Required. Name of the ``Target``. Format must be
                 projects/{project_id}/locations/{location_name}/targets/{target_name}.
@@ -1581,8 +1575,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         Args:
             request (Union[google.cloud.deploy_v1.types.CreateTargetRequest, dict]):
-                The request object. The request object for
-                `CreateTarget`.
+                The request object. The request object for ``CreateTarget``.
             parent (str):
                 Required. The parent collection in which the ``Target``
                 should be created. Format should be
@@ -1716,8 +1709,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         Args:
             request (Union[google.cloud.deploy_v1.types.UpdateTargetRequest, dict]):
-                The request object. The request object for
-                `UpdateTarget`.
+                The request object. The request object for ``UpdateTarget``.
             target (google.cloud.deploy_v1.types.Target):
                 Required. The ``Target`` to update.
                 This corresponds to the ``target`` field
@@ -1849,8 +1841,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         Args:
             request (Union[google.cloud.deploy_v1.types.DeleteTargetRequest, dict]):
-                The request object. The request object for
-                `DeleteTarget`.
+                The request object. The request object for ``DeleteTarget``.
             name (str):
                 Required. The name of the ``Target`` to delete. Format
                 should be
@@ -1971,8 +1962,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         Args:
             request (Union[google.cloud.deploy_v1.types.ListReleasesRequest, dict]):
-                The request object. The request object for
-                `ListReleases`.
+                The request object. The request object for ``ListReleases``.
             parent (str):
                 Required. The ``DeliveryPipeline`` which owns this
                 collection of ``Release`` objects.
@@ -2084,7 +2074,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         Args:
             request (Union[google.cloud.deploy_v1.types.GetReleaseRequest, dict]):
-                The request object. The request object for `GetRelease`.
+                The request object. The request object for ``GetRelease``.
             name (str):
                 Required. Name of the ``Release``. Format must be
                 projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}.
@@ -2195,8 +2185,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         Args:
             request (Union[google.cloud.deploy_v1.types.CreateReleaseRequest, dict]):
-                The request object. The request object for
-                `CreateRelease`,
+                The request object. The request object for ``CreateRelease``,
             parent (str):
                 Required. The parent collection in which the ``Release``
                 should be created. Format should be
@@ -2326,8 +2315,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         Args:
             request (Union[google.cloud.deploy_v1.types.AbandonReleaseRequest, dict]):
-                The request object. The request object used by
-                `AbandonRelease`.
+                The request object. The request object used by ``AbandonRelease``.
             name (str):
                 Required. Name of the Release. Format
                 is
@@ -2429,8 +2417,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         Args:
             request (Union[google.cloud.deploy_v1.types.ApproveRolloutRequest, dict]):
-                The request object. The request object used by
-                `ApproveRollout`.
+                The request object. The request object used by ``ApproveRollout``.
             name (str):
                 Required. Name of the Rollout. Format
                 is
@@ -2533,8 +2520,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         Args:
             request (Union[google.cloud.deploy_v1.types.AdvanceRolloutRequest, dict]):
-                The request object. The request object used by
-                `AdvanceRollout`.
+                The request object. The request object used by ``AdvanceRollout``.
             name (str):
                 Required. Name of the Rollout. Format
                 is
@@ -2642,8 +2628,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         Args:
             request (Union[google.cloud.deploy_v1.types.CancelRolloutRequest, dict]):
-                The request object. The request object used by
-                `CancelRollout`.
+                The request object. The request object used by ``CancelRollout``.
             name (str):
                 Required. Name of the Rollout. Format
                 is
@@ -2745,8 +2730,8 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         Args:
             request (Union[google.cloud.deploy_v1.types.ListRolloutsRequest, dict]):
-                The request object. ListRolloutsRequest is the request
-                object used by `ListRollouts`.
+                The request object. ListRolloutsRequest is the request object used by
+                ``ListRollouts``.
             parent (str):
                 Required. The ``Release`` which owns this collection of
                 ``Rollout`` objects.
@@ -2859,8 +2844,8 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         Args:
             request (Union[google.cloud.deploy_v1.types.GetRolloutRequest, dict]):
-                The request object. GetRolloutRequest is the request
-                object used by `GetRollout`.
+                The request object. GetRolloutRequest is the request object used by
+                ``GetRollout``.
             name (str):
                 Required. Name of the ``Rollout``. Format must be
                 projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}/rollouts/{rollout_name}.
@@ -2975,8 +2960,8 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         Args:
             request (Union[google.cloud.deploy_v1.types.CreateRolloutRequest, dict]):
-                The request object. CreateRolloutRequest is the request
-                object used by `CreateRollout`.
+                The request object. CreateRolloutRequest is the request object used by
+                ``CreateRollout``.
             parent (str):
                 Required. The parent collection in which the ``Rollout``
                 should be created. Format should be
@@ -3110,8 +3095,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         Args:
             request (Union[google.cloud.deploy_v1.types.IgnoreJobRequest, dict]):
-                The request object. The request object used by
-                `IgnoreJob`.
+                The request object. The request object used by ``IgnoreJob``.
             rollout (str):
                 Required. Name of the Rollout. Format
                 is
@@ -3234,8 +3218,8 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         Args:
             request (Union[google.cloud.deploy_v1.types.RetryJobRequest, dict]):
-                The request object. RetryJobRequest is the request
-                object used by `RetryJob`.
+                The request object. RetryJobRequest is the request object used by
+                ``RetryJob``.
             rollout (str):
                 Required. Name of the Rollout. Format
                 is
@@ -3355,8 +3339,8 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         Args:
             request (Union[google.cloud.deploy_v1.types.ListJobRunsRequest, dict]):
-                The request object. ListJobRunsRequest is the request
-                object used by `ListJobRuns`.
+                The request object. ListJobRunsRequest is the request object used by
+                ``ListJobRuns``.
             parent (str):
                 Required. The ``Rollout`` which owns this collection of
                 ``JobRun`` objects.
@@ -3469,8 +3453,8 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         Args:
             request (Union[google.cloud.deploy_v1.types.GetJobRunRequest, dict]):
-                The request object. GetJobRunRequest is the request
-                object used by `GetJobRun`.
+                The request object. GetJobRunRequest is the request object used by
+                ``GetJobRun``.
             name (str):
                 Required. Name of the ``JobRun``. Format must be
                 projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}/rollouts/{rollout_name}/jobRuns/{job_run_name}.
@@ -3573,8 +3557,7 @@ class CloudDeployClient(metaclass=CloudDeployClientMeta):
 
         Args:
             request (Union[google.cloud.deploy_v1.types.TerminateJobRunRequest, dict]):
-                The request object. The request object used by
-                `TerminateJobRun`.
+                The request object. The request object used by ``TerminateJobRun``.
             name (str):
                 Required. Name of the ``JobRun``. Format must be
                 projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/

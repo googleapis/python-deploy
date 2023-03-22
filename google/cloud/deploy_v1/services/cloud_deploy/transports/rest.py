@@ -1835,7 +1835,6 @@ class CloudDeployRestTransport(CloudDeployTransport):
                 request (~.cloud_deploy.CreateRolloutRequest):
                     The request object. CreateRolloutRequest is the request object used by
                 ``CreateRollout``.
-
                 retry (google.api_core.retry.Retry): Designation of what errors, if any,
                     should be retried.
                 timeout (float): The timeout for this request.
@@ -2386,7 +2385,6 @@ class CloudDeployRestTransport(CloudDeployTransport):
                 request (~.cloud_deploy.GetJobRunRequest):
                     The request object. GetJobRunRequest is the request object used by
                 ``GetJobRun``.
-
                 retry (google.api_core.retry.Retry): Designation of what errors, if any,
                     should be retried.
                 timeout (float): The timeout for this request.
@@ -2568,7 +2566,6 @@ class CloudDeployRestTransport(CloudDeployTransport):
                 request (~.cloud_deploy.GetRolloutRequest):
                     The request object. GetRolloutRequest is the request object used by
                 ``GetRollout``.
-
                 retry (google.api_core.retry.Retry): Designation of what errors, if any,
                     should be retried.
                 timeout (float): The timeout for this request.
@@ -2933,7 +2930,6 @@ class CloudDeployRestTransport(CloudDeployTransport):
                 request (~.cloud_deploy.ListJobRunsRequest):
                     The request object. ListJobRunsRequest is the request object used by
                 ``ListJobRuns``.
-
                 retry (google.api_core.retry.Retry): Designation of what errors, if any,
                     should be retried.
                 timeout (float): The timeout for this request.
@@ -3109,7 +3105,6 @@ class CloudDeployRestTransport(CloudDeployTransport):
                 request (~.cloud_deploy.ListRolloutsRequest):
                     The request object. ListRolloutsRequest is the request object used by
                 ``ListRollouts``.
-
                 retry (google.api_core.retry.Retry): Designation of what errors, if any,
                     should be retried.
                 timeout (float): The timeout for this request.
@@ -3285,7 +3280,6 @@ class CloudDeployRestTransport(CloudDeployTransport):
                 request (~.cloud_deploy.RetryJobRequest):
                     The request object. RetryJobRequest is the request object used by
                 ``RetryJob``.
-
                 retry (google.api_core.retry.Retry): Designation of what errors, if any,
                     should be retried.
                 timeout (float): The timeout for this request.
