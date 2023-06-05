@@ -8651,6 +8651,7 @@ def test_create_delivery_pipeline_rest(request_type):
                                     "service_networking": {
                                         "service": "service_value",
                                         "deployment": "deployment_value",
+                                        "disable_pod_overprovisioning": True,
                                     },
                                 },
                                 "cloud_run": {"automatic_traffic_control": True},
@@ -8930,6 +8931,7 @@ def test_create_delivery_pipeline_rest_bad_request(
                                     "service_networking": {
                                         "service": "service_value",
                                         "deployment": "deployment_value",
+                                        "disable_pod_overprovisioning": True,
                                     },
                                 },
                                 "cloud_run": {"automatic_traffic_control": True},
@@ -9095,6 +9097,7 @@ def test_update_delivery_pipeline_rest(request_type):
                                     "service_networking": {
                                         "service": "service_value",
                                         "deployment": "deployment_value",
+                                        "disable_pod_overprovisioning": True,
                                     },
                                 },
                                 "cloud_run": {"automatic_traffic_control": True},
@@ -9359,6 +9362,7 @@ def test_update_delivery_pipeline_rest_bad_request(
                                     "service_networking": {
                                         "service": "service_value",
                                         "deployment": "deployment_value",
+                                        "disable_pod_overprovisioning": True,
                                     },
                                 },
                                 "cloud_run": {"automatic_traffic_control": True},
@@ -12089,6 +12093,7 @@ def test_create_release_rest(request_type):
                                         "service_networking": {
                                             "service": "service_value",
                                             "deployment": "deployment_value",
+                                            "disable_pod_overprovisioning": True,
                                         },
                                     },
                                     "cloud_run": {"automatic_traffic_control": True},
@@ -12437,6 +12442,7 @@ def test_create_release_rest_bad_request(
                                         "service_networking": {
                                             "service": "service_value",
                                             "deployment": "deployment_value",
+                                            "disable_pod_overprovisioning": True,
                                         },
                                     },
                                     "cloud_run": {"automatic_traffic_control": True},

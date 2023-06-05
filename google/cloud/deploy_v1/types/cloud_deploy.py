@@ -552,6 +552,13 @@ class KubernetesConfig(proto.Message):
                 Required. Name of the Kubernetes Deployment
                 whose traffic is managed by the specified
                 Service.
+            disable_pod_overprovisioning (bool):
+                Optional. Whether to disable Pod
+                overprovisioning. If Pod overprovisioning is
+                disabled then Cloud Deploy will limit the number
+                of total Pods used for the deployment strategy
+                to the number of Pods the Deployment has on the
+                cluster.
         """
 
         service: str = proto.Field(
@@ -561,6 +568,10 @@ class KubernetesConfig(proto.Message):
         deployment: str = proto.Field(
             proto.STRING,
             number=2,
+        )
+        disable_pod_overprovisioning: bool = proto.Field(
+            proto.BOOL,
+            number=3,
         )
 
     gateway_service_mesh: GatewayServiceMesh = proto.Field(
@@ -1690,9 +1701,8 @@ class DeleteTargetRequest(proto.Message):
             exception that zero UUID is not supported
             (00000000-0000-0000-0000-000000000000).
         allow_missing (bool):
-            Optional. If set to true, then deleting an
-            already deleted or non-existing DeliveryPipeline
-            will succeed.
+            Optional. If set to true, then deleting an already deleted
+            or non-existing ``Target`` will succeed.
         validate_only (bool):
             Optional. If set, validate the request and
             preview the review, but do not actually post it.
